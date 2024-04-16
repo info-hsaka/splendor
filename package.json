@@ -1,0 +1,18 @@
+{
+  "name": "boardgame",
+  "version": "1.0.0",
+  "description": "HSAKA Boardgame",
+  "scripts": {
+    "start": "npm run frontend",
+    "multiplayer": "cross-env NODE_NO_WARNINGS=1 VITE_REMOTE=true concurrently -n frontend,server -c blue,green \"npm run frontend\" \"npm run server\"",
+    "frontend": "vite --host 0.0.0.0 --port 3000 --open",
+    "server": "tsx --watch ./src/Server.js"
+  },
+  "dependencies": {
+    "boardgame.io": "0.50.2",
+    "concurrently": "8.2.2",
+    "cross-env": "7.0.3",
+    "tsx": "4.7.2",
+    "vite": "5.2.9"
+  }
+}

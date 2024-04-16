@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Lokal",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["start"],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Multiplayer",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "multiplayer"],
+            "cwd": "${workspaceRoot}"
+        }
+    ]
+}

@@ -8,7 +8,7 @@ const multiplayer = import.meta.env.VITE_REMOTE === "true"
 
 class GameClient {
   
-  constructor() {
+  constructor(rootElement) {
     this.client = Client({
       game: Game,
       multiplayer,
@@ -26,4 +26,5 @@ class GameClient {
   update(state) {}
 }
 
-new GameClient()
+const appElement = document.getElementById('app');
+const app = new GameClient(appElement);

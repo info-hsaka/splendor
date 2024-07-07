@@ -21,6 +21,7 @@ class GameClient {
     this.attachListeners();
   }
 
+  attachListeners() {}
   createBoard() {}
   update(state) {}
 }

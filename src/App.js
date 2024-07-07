@@ -7,6 +7,7 @@ const multiplayer = import.meta.env.VITE_REMOTE === "true"
   : Local()
 
 class GameClient {
+  
   constructor() {
     this.client = Client({
       game: Game,
@@ -15,8 +16,12 @@ class GameClient {
 
     this.client.subscribe((state) => this.update(state))
     this.client.start()
+    this.rootElement = rootElement;
+    this.createBoard();
+    this.attachListeners();
   }
 
+  createBoard() {}
   update(state) {}
 }
 

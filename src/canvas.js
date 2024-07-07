@@ -3,6 +3,15 @@ const canvas = document.getElementById('canvas');
 // { x,y, height, width, handler)
 const handlers = []
 
+/**
+ * Register a click handler for the given bounds
+ * Will be called when a click event is received on the canvas, that is within the given bounds
+ * @param x position from the left side of the canvas
+ * @param width width of the clickable area
+ * @param y position from the top side of the canvas
+ * @param height height of the clickable area
+ * @param handler function to be called when the click event is received
+ */
 export function onClick(x, width, y, height, handler) {
     handlers.push({
         x,
@@ -13,6 +22,9 @@ export function onClick(x, width, y, height, handler) {
     })
 }
 
+/**
+ * Remove all click handlers
+ */
 export function resetOnClicks() {
     handlers.splice(0, handlers.length)
 }
@@ -21,6 +33,7 @@ const elemLeft = canvas.offsetLeft + canvas.clientLeft
 const elemTop = canvas.offsetTop + canvas.clientTop
 
 const debug = false
+
 canvas.addEventListener('click', function (event) {
     const x = event.pageX - elemLeft
     const y = event.pageY - elemTop
@@ -31,6 +44,7 @@ canvas.addEventListener('click', function (event) {
     let called = false
 
     // Collision detection between clicked offset and element.
+    // Go through all registered handlers and call all that matches the click
     handlers.forEach(function (element) {
         if (y > element.y && y < element.y + element.height && x > element.x && x < element.z + element.width) {
             called = true

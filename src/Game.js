@@ -1,13 +1,13 @@
-import { TurnOrder } from "boardgame.io/core"
+import { TurnOrder } from "boardgame.io/core";
 
 export const Game = {
-  setup: ({ ctx }) => {
-    return {}
+  setup: (setup) => {
+    return {};
   },
 
   moves: {
-    playCard: ({ G, ctx, playerID, events, random }, cardIndex) => {},
-    drawCard: ({ G, ctx, playerID, events, random }) => {},
+    playCard: (playCard, cardIndex) => {},
+    drawCard: (drawCard) => {},
   },
 
   seed: "random-seed",
@@ -15,8 +15,8 @@ export const Game = {
   turn: {
     order: TurnOrder.DEFAULT,
 
-    onBegin: ({ G, ctx, events, random }) => {},
-    onEnd: ({ G, ctx, events, random }) => {},
+    onBegin: (onBegin) => {},
+    onEnd: (onEnd) => {},
 
     minMoves: 1,
     maxMoves: 1,
@@ -27,5 +27,5 @@ export const Game = {
 
   disableUndo: true,
 
-  endIf: ({ G, ctx, random }) => {},
-}
+  endIf: (endIf) => {},
+};

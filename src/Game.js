@@ -1,8 +1,8 @@
-import { TurnOrder } from "boardgame.io/core"
+import { TurnOrder } from "boardgame.io/core";
 
 export const Game = {
   setup: ({ ctx }) => {
-    return {}
+    return {};
   },
 
   moves: {
@@ -28,4 +28,4 @@ export const Game = {
   disableUndo: true,
 
   endIf: ({ G, ctx, random }) => {},
-}
+};

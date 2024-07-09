@@ -1,28 +1,33 @@
-import { Client } from "boardgame.io/client"
-import { Local, SocketIO } from "boardgame.io/multiplayer"
-import { Game } from "./Game"
-import {resetOnClicks} from "./canvas";
+import { Client } from "boardgame.io/client";
+import { Local, SocketIO } from "boardgame.io/multiplayer";
+import { Game } from "./Game";
+import { resetOnClicks } from "./canvas";
 
-const multiplayer = import.meta.env.VITE_REMOTE === "true"
-  ? SocketIO({ server: "localhost:8000" })
-  : Local()
+const multiplayer =
+  import.meta.env.VITE_REMOTE === "true"
+    ? SocketIO({ server: "localhost:8000" })
+    : Local();
 
 class GameClient {
-  constructor() {
+  constructor(rootElement) {
     this.client = Client({
       game: Game,
       multiplayer,
-    })
+    });
 
-    this.client.subscribe((state) => this.update(state))
-    this.client.start()
+    this.client.subscribe((state) => this.update(state));
+    this.client.start();
+    this.rootElement = rootElement;
+    this.createBoard();
+    this.attachListeners();
   }
 
   update(state) {
     // We need to reset all the onClick handlers
-    resetOnClicks()
+    resetOnClicks();
     // draw the state here:
   }
 }
 
-new GameClient()
+const appElement = document.getElementById("app");
+const app = new GameClient(appElement);

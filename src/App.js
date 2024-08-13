@@ -1,32 +1,28 @@
-import { Client } from "boardgame.io/client";
-import { Local, SocketIO } from "boardgame.io/multiplayer";
-import { resetOnClicks } from "./canvas";
-import { TicTacToe } from "./TicTacToe";
+import { Client } from "boardgame.io/client"
+import { Local, SocketIO } from "boardgame.io/multiplayer"
+import { resetOnClicks } from "./canvas"
+import { Game } from "./Game"
 
-const isMultiplayer = import.meta.env.VITE_REMOTE === "true";
+const isMultiplayer = import.meta.env.VITE_REMOTE === "true"
 
 const multiplayer = isMultiplayer
-  ? SocketIO({ server: "localhost:8000" })
-  : Local();
+    ? SocketIO({ server: "localhost:8000" })
+    : Local()
 
 class GameClient {
-  constructor(rootElement) {
-    this.rootElement = rootElement;
+    constructor(rootElement) {
+        this.rootElement = rootElement
 
-    this.client = Client({
-      game: TicTacToe,
-    });
+        this.client = Client({
+            game: Game,
+        })
 
-    this.client.subscribe((state) => this.update(state));
-    this.client.start();
-  }
+        this.client.subscribe((state) => this.update(state))
+        this.client.start()
+    }
 
-  update(state) {
-
-  }
-
-
+    update(state) {}
 }
 
-const appElement = document.getElementById("app");
-const app = new GameClient(appElement);
+const appElement = document.getElementById("app")
+const app = new GameClient(appElement)

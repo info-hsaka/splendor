@@ -254,6 +254,15 @@ export const Game = {
 
       stapel3: [],
     };
+
+    chipsReservoir = {
+        gruen: 7,
+        blau: 7,
+        schwarz: 7,
+        rot: 7,
+        weiss: 7,
+        gelb: 5,
+    }
     return {};
   },
 

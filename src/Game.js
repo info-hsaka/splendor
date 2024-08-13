@@ -32,6 +32,46 @@ export const Game = {
       reservierteKarten: [
         { farbe: "gruen", Siegpunkte: 4, Preis: { rot: 0, gruen: 0, blau: 7, weiss: 0, schwarz: 0 } }
       ],
+
+      
+    }
+    
+    markt =  {
+      reiheNobels: [{Siegpunkte: 3, Preis: {rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0}},
+         {Siegpunkte: 3, Preis: {rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0}}, 
+         {Siegpunkte: 3, Preis: {rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0}}],
+
+      reihe1: [{farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+      ],
+
+      reihe2: [{farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}}, //karten aus seltenheit 1 als beispiel
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+      ],
+
+      reihe3: [{farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}}, //karten aus seltenheit 1 als beispiel
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+               {farbe: "blau", Siegpunkte: 2, Preis: {rot:1, gruen:3, blau:2, weiss: 0, schwarz:0}},
+      ],
+
+      stapel1: [
+      
+      ],
+
+      stapel2: [
+      
+      ],
+
+      stapel3: [
+      
+      ],
+
+      
     }
     return {};
   },

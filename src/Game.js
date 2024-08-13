@@ -267,8 +267,12 @@ export const Game = {
   },
 
   moves: {
-    playCard: (playCard, cardIndex) => {},
-    drawCard: (drawCard) => {},
+    karteKaufen (move, KarteID) { //karte muss abgerufen werden können bsp kartenID
+        if (karte.Preis - spieler.karten <= 0) {
+            
+        }
+
+    }
   },
 
   seed: "random-seed",

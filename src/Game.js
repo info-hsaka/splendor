@@ -125,11 +125,19 @@ const Seltenheit2Deck = [
     },
 ]
 
+const ChipsReservoir = {
+    gruen: 7,
+    blau: 7,
+    schwarz: 7,
+    rot: 7,
+    weiss: 7,
+    gelb: 5,
+}
 console.log(Seltenheit1Deck[0])
 export const Game = {
     setup: ({ random }) => {
         //beispiel für spieler
-        spieler1 = {
+        const spieler1 = {
             chips: {
                 gruen: 5, //beispiele
                 rot: 1,
@@ -144,7 +152,7 @@ export const Game = {
                     farbe: "blau",
                     Siegpunkte: 2,
                     Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
-                }, //Seltenheit1[0]
+                },
             ],
 
             Nobles: [
@@ -162,8 +170,7 @@ export const Game = {
                 },
             ],
         }
-
-        markt = {
+        const markt = {
             reiheNobles: [
                 {
                     Siegpunkte: 3,
@@ -255,8 +262,11 @@ export const Game = {
     },
 
     moves: {
-        playCard: (playCard, cardIndex) => {},
-        drawCard: (drawCard) => {},
+        karteKaufen(move, KarteID) {
+            //karte muss abgerufen werden können bsp kartenID
+            if (karte.Preis - spieler.karten <= 0) {
+            }
+        },
     },
 
     seed: "random-seed",

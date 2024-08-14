@@ -298,7 +298,6 @@ export const Game = {
           AnzahlHandKarten.schwarz = AnzahlHandKarten.schwarz + 1;
         }
         i = i + 1;
-        npm;
       }
       if (
         karteID.Preis.gruen <= AnzahlHandKarten.gruen &&

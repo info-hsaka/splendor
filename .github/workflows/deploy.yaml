@@ -19,5 +19,5 @@ jobs:
         uses: dokku/github-action@v1.5.0
         with:
           branch: main
-          git_remote_url: 'ssh://dokku@burg.games/${{ env.GAME_APP_NAME }}'
+          git_remote_url: 'ssh://dokku@burg.games/${{ vars.GAME_APP_NAME }}'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}

@@ -155,7 +155,11 @@ let playerNames = []
 
 export const Game = {
     setup: ({ random, ctx }) => {
-        console.log(ctx)
+        let einzelneSpielerHaende = {}
+
+        for (const spielerPlayOrder of ctx.playOrder) {
+            einzelneSpielerHaende[spielerPlayOrder] = SpielerSetup()
+        }
 
         //beispiel für spieler1
         const spieler1 = {

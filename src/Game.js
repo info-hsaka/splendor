@@ -130,6 +130,7 @@ function SpielerSetup() {
 
 let playerNames = [];
 
+/** @type {Game} */
 export const Game = {
   setup: ({ random, ctx }) => {
     let einzelneSpielerHaende = {};
@@ -173,11 +174,9 @@ export const Game = {
       ],
     };
 
-    for (const Playernumber of ctx.playOrder) {
-    }
-    const spielerHaende = [];
-
     const markt = {
+      marktChips: ChipsReservoir,
+
       reiheNobles: [
         {
           Siegpunkte: 3,
@@ -267,6 +266,8 @@ export const Game = {
       reihe2: reihe2,
       erihe3: reihe3,
       reiheNobles: reiheNobles,
+      markt: markt,
+      einzelneSpielerHaende: einzelneSpielerHaende,
     };
   },
 
@@ -340,6 +341,19 @@ export const Game = {
         if (karteID.Preis.gruen - AnzahlHandKarten.gruen > 0) {
           spieler1.chips.gruen = spieler1.chips.gruen - karteID.Preis;
         }
+      }
+    },
+
+    zweiChipsZiehen(move, colour) {
+      let chipsGesamtSpieler =
+        move.G.einzelneSpielerHaende.Chips.gruen + //weitermachen nur ein Spieler!
+        Chips.rot +
+        Chips.blau +
+        Chips.weiss +
+        Chips.schwarz +
+        Chips.gelb;
+      console.log(chipsGesamtSpieler);
+      if (marktChips.colour >= 4) {
       }
     },
   },

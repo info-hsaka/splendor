@@ -4,9 +4,11 @@
   "description": "HSAKA Boardgame",
   "scripts": {
     "start": "npm run frontend",
+    "build": "vite build",
     "multiplayer": "cross-env NODE_NO_WARNINGS=1 VITE_REMOTE=true concurrently -n frontend,server -c blue,green \"npm run frontend\" \"npm run server\"",
     "frontend": "vite --host 0.0.0.0 --port 3000 --open",
-    "server": "tsx --watch ./src/Server.js"
+    "server": "tsx --watch ./src/Server.js",
+    "herokup-postbuild": "npm run build"
   },
   "dependencies": {
     "boardgame.io": "0.50.2",

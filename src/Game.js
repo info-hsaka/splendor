@@ -1,3 +1,5 @@
+/** @import { Game } from "boardgame.io" */
+
 import { TurnOrder } from "boardgame.io/core"
 
 // Karten
@@ -30,7 +32,6 @@ const nobles = [
         Preis: { rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0 },
     },
 ]
-
 // Deck: Seltenheit 1
 
 const Seltenheit1Deck = [
@@ -125,6 +126,7 @@ const Seltenheit2Deck = [
     },
 ]
 
+//Chips deck
 const ChipsReservoir = {
     gruen: 7,
     blau: 7,
@@ -133,6 +135,7 @@ const ChipsReservoir = {
     weiss: 7,
     gelb: 5,
 }
+
 console.log(Seltenheit1Deck[0])
 
 function SpielerSetup() {
@@ -153,6 +156,41 @@ let playerNames = []
 export const Game = {
     setup: ({ random, ctx }) => {
         console.log(ctx)
+
+        //beispiel für spieler1
+        const spieler1 = {
+            chips: {
+                gruen: 5, //beispiele
+                rot: 1,
+                blau: 2,
+                weiss: 0,
+                schwarz: 1,
+                gelb: 0,
+            },
+
+            karten: [
+                {
+                    farbe: "blau",
+                    Siegpunkte: 2,
+                    Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+                },
+            ],
+
+            Nobles: [
+                {
+                    Siegpunkte: 3,
+                    Preis: { rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0 },
+                },
+            ],
+
+            reservierteKarten: [
+                {
+                    farbe: "gruen",
+                    Siegpunkte: 4,
+                    Preis: { rot: 0, gruen: 0, blau: 7, weiss: 0, schwarz: 0 },
+                },
+            ],
+        }
 
         for (const Playernumber of ctx.playOrder) {
         }
@@ -221,6 +259,8 @@ export const Game = {
             ],
         }
 
+        const Seltenheit3Deck = []
+
         const stapel1 = random.Shuffle(Seltenheit1Deck)
         const stapel2 = random.Shuffle(Seltenheit2Deck)
         const stapel3 = random.Shuffle(Seltenheit3Deck)
@@ -250,9 +290,39 @@ export const Game = {
     },
 
     moves: {
+        //todo kartenid
         karteKaufen(move, KarteID) {
-            //karte muss abgerufen werden können bsp kartenID
-            if (karte.Preis - spieler.karten <= 0) {
+            let i = 0
+            //gekaufte Karten die in der Spielerhand sind
+            let AnzahlHandKarten = {
+                rot: 0,
+                gruen: 0,
+                blau: 0,
+                weiss: 0,
+                schwarz: 0,
+            }
+
+            while (i < karten.length + 1) {
+                if (karten[i].farbe == "blau") {
+                    AnzahlHandKarten.blau = AnzahlHandKarten.blau + 1
+                } else if (karten[i].farbe == "gruen") {
+                    AnzahlHandKarten.gruen = AnzahlHandKarten.gruen + 1
+                } else if (karten[i].farbe == "rot") {
+                    AnzahlHandKarten.rot = AnzahlHandKarten.rot + 1
+                } else if (karten[i].farbe == "weiss") {
+                    AnzahlHandKarten.weiss = AnzahlHandKarten.weiss + 1
+                } else if (karten[i].farbe == "schwarz") {
+                    AnzahlHandKarten.schwarz = AnzahlHandKarten.schwarz + 1
+                }
+                i = i + 1
+            }
+            if (
+                karten.Preis.gruen <= AnzahlHandKarten.gruen &&
+                karten.Preis.rot <= AnzahlHandKarten.rot &&
+                karten.Preis.blau <= AnzahlHandKarten.blau &&
+                karten.Preis.schwarz <= AnzahlHandKarten.schwarz &&
+                karten.Preis.weiss <= AnzahlHandKarten.weiss
+            ) {
             }
         },
     },

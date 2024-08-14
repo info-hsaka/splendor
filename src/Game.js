@@ -134,42 +134,30 @@ const ChipsReservoir = {
     gelb: 5,
 }
 console.log(Seltenheit1Deck[0])
+
+function SpielerSetup() {
+    const SpielerHandStart = {
+        Chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz: 0, gelb: 0 },
+
+        karten: [],
+
+        Nobles: [],
+
+        reservierteKarten: [],
+    }
+    return SpielerHandStart
+}
+
+let playerNames = []
+
 export const Game = {
-    setup: ({ random }) => {
-        //beispiel für spieler
-        const spieler1 = {
-            chips: {
-                gruen: 5, //beispiele
-                rot: 1,
-                blau: 2,
-                weiss: 0,
-                schwarz: 1,
-                gelb: 0,
-            },
+    setup: ({ random, ctx }) => {
+        console.log(ctx)
 
-            karten: [
-                {
-                    farbe: "blau",
-                    Siegpunkte: 2,
-                    Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
-                },
-            ],
-
-            Nobles: [
-                {
-                    Siegpunkte: 3,
-                    Preis: { rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0 },
-                },
-            ],
-
-            reservierteKarten: [
-                {
-                    farbe: "gruen",
-                    Siegpunkte: 4,
-                    Preis: { rot: 0, gruen: 0, blau: 7, weiss: 0, schwarz: 0 },
-                },
-            ],
+        for (const Playernumber of ctx.playOrder) {
         }
+        const spielerHaende = []
+
         const markt = {
             reiheNobles: [
                 {
@@ -233,9 +221,9 @@ export const Game = {
             ],
         }
 
-        const stapel1 = random.shuffle(Seltenheit1Deck)
-        const stapel2 = random.shuffle(Seltenheit2Deck)
-        const stapel3 = random.shuffle(Seltenheit3Deck)
+        const stapel1 = random.Shuffle(Seltenheit1Deck)
+        const stapel2 = random.Shuffle(Seltenheit2Deck)
+        const stapel3 = random.Shuffle(Seltenheit3Deck)
 
         let i = 0
         let y = 0
@@ -256,7 +244,7 @@ export const Game = {
         return {
             reihe1: reihe1,
             reihe2: reihe2,
-            reihe3: reihe3,
+            erihe3: reihe3,
             reiheNobles: reiheNobles,
         }
     },

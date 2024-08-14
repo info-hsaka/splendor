@@ -2,29 +2,6 @@
 
 import { TurnOrder } from "boardgame.io/core";
 
-// Karten
-const Seltenheit1 = [
-  {
-    Farbe: "blau",
-    Siegpunkte: 2,
-    Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
-  },
-];
-const Seltenheit2 = [
-  {
-    Farbe: "rot",
-    Siegpunkte: 3,
-    Preis: { rot: 0, gruen: 0, blau: 5, weiss: 3, schwarz: 1 },
-  },
-];
-const Seltenheit3 = [
-  {
-    Farbe: "gruen",
-    Siegpunkte: 4,
-    Preis: { rot: 0, gruen: 0, blau: 7, weiss: 0, schwarz: 0 },
-  },
-];
-
 // Nobles
 const nobles = [
   {
@@ -268,8 +245,9 @@ export const Game = {
   },
 
   moves: {
-    //todo kartenid
-    karteKaufen(move, KarteID) {
+    //karteID: objekt mit Karteninformation reihe1[1]
+    karteKaufen(move, karteID, reiheID, positionID) {
+      //reiheID : "reihe1" positionID : "1"
       let i = 0;
       //gekaufte Karten die in der Spielerhand sind
       let AnzahlHandKarten = {
@@ -295,13 +273,27 @@ export const Game = {
         i = i + 1;
       }
       if (
-        karten.Preis.gruen <= AnzahlHandKarten.gruen &&
-        karten.Preis.rot <= AnzahlHandKarten.rot &&
-        karten.Preis.blau <= AnzahlHandKarten.blau &&
-        karten.Preis.schwarz <= AnzahlHandKarten.schwarz &&
-        karten.Preis.weiss <= AnzahlHandKarten.weiss
+        karteID.Preis.gruen <= AnzahlHandKarten.gruen &&
+        karteID.Preis.rot <= AnzahlHandKarten.rot &&
+        karteID.Preis.blau <= AnzahlHandKarten.blau &&
+        karteID.Preis.schwarz <= AnzahlHandKarten.schwarz &&
+        karteID.Preis.weiss <= AnzahlHandKarten.weiss
       ) {
-      }
+        if (reiheID == "reihe1") {
+          move.G.markt.reihe1.splice(positionID, 1);
+          move.G.markt.reihe1.splice(positionID, 0, Seltenheit1Deck.pop());
+        } else if (reiheID == "reihe2") {
+          move.G.markt.reihe2.splice(positionID, 1);
+          move.G.markt.reihe2.splice(positionID, 0, Seltenheit2Deck.pop());
+        } else if (reiheID == "reihe3") {
+          move.G.markt.reihe3.splice(positionID, 1);
+          move.G.markt.reihe3.splice(positionID, 0, Seltenheit3Deck.pop());
+        }
+
+        spieler.karten.push(karteID);
+      } else if (
+        AnzahlHandKarten.gruen + 
+      )
     },
   },
 

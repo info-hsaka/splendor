@@ -237,9 +237,11 @@ export const Game = {
       ],
     };
 
-    const stapel1 = random.shuffle(Seltenheit1Deck);
-    const stapel2 = random.shuffle(Seltenheit2Deck);
-    const stapel3 = random.shuffle(Seltenheit3Deck);
+    const Seltenheit3Deck = [];
+
+    const stapel1 = random.Shuffle(Seltenheit1Deck);
+    const stapel2 = random.Shuffle(Seltenheit2Deck);
+    const stapel3 = random.Shuffle(Seltenheit3Deck);
 
     let i = 0;
     let y = 0;
@@ -266,9 +268,10 @@ export const Game = {
   },
 
   moves: {
+    //todo kartenid
     karteKaufen(move, KarteID) {
       let i = 0;
-      //gekaufte Karten die in der spielerhand sind
+      //gekaufte Karten die in der Spielerhand sind
       let AnzahlHandKarten = {
         rot: 0,
         gruen: 0,
@@ -289,7 +292,15 @@ export const Game = {
         } else if (karten[i].farbe == "schwarz") {
           AnzahlHandKarten.schwarz = AnzahlHandKarten.schwarz + 1;
         }
-        i = i + 1
+        i = i + 1;
+      }
+      if (
+        karten.Preis.gruen <= AnzahlHandKarten.gruen &&
+        karten.Preis.rot <= AnzahlHandKarten.rot &&
+        karten.Preis.blau <= AnzahlHandKarten.blau &&
+        karten.Preis.schwarz <= AnzahlHandKarten.schwarz &&
+        karten.Preis.weiss <= AnzahlHandKarten.weiss
+      ) {
       }
     },
   },

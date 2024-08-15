@@ -145,41 +145,6 @@ export const Game = {
       einzelneSpielerHaende[spielerPlayOrder] = SpielerSetup();
     }
 
-    //beispiel für Spielerhand
-    const Spielerhand = {
-      chips: {
-        gruen: 5, //beispiele
-        rot: 1,
-        blau: 2,
-        weiss: 0,
-        schwarz: 1,
-        gelb: 0,
-      },
-
-      karten: [
-        {
-          farbe: "blau",
-          Siegpunkte: 2,
-          Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
-        },
-      ],
-
-      Nobles: [
-        {
-          Siegpunkte: 3,
-          Preis: { rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0 },
-        },
-      ],
-
-      reservierteKarten: [
-        {
-          farbe: "gruen",
-          Siegpunkte: 4,
-          Preis: { rot: 0, gruen: 0, blau: 7, weiss: 0, schwarz: 0 },
-        },
-      ],
-    };
-
     const markt = {
       marktChips: ChipsReservoir,
 
@@ -302,10 +267,11 @@ export const Game = {
   },
 
   moves: {
-    //karteID: objekt mit Karteninformation reihe1[1]
-    karteKaufen(move, karteID, reiheID, positionID) {
-      //reiheID : "reihe1" positionID : "1"
-      console.log("kaufe KarteID!");
+    //move.G.reihen[reiheID][positionID]: objekt mit Karteninformation reihe1[1]
+
+    karteKaufen(move, reiheID, positionID) {
+      //reiheID : "1" positionID : "1"
+
       let i = 0;
       //gekaufte Karten die in der Spielerhand sind
       let AnzahlHandKarten = {
@@ -331,72 +297,129 @@ export const Game = {
         }
         i = i + 1;
       }
-      console.log(karteID);
+
       console.log(AnzahlHandKarten);
       if (
-        karteID.Preis.gruen <= AnzahlHandKarten.gruen &&
-        karteID.Preis.rot <= AnzahlHandKarten.rot &&
-        karteID.Preis.blau <= AnzahlHandKarten.blau &&
-        karteID.Preis.schwarz <= AnzahlHandKarten.schwarz &&
-        karteID.Preis.weiss <= AnzahlHandKarten.weiss
+        move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
+          AnzahlHandKarten.gruen &&
+        move.G.markt.reihen[reiheID][positionID].Preis.rot <=
+          AnzahlHandKarten.rot &&
+        move.G.markt.reihen[reiheID][positionID].Preis.blau <=
+          AnzahlHandKarten.blau &&
+        move.G.markt.reihen[reiheID][positionID].Preis.schwarz <=
+          AnzahlHandKarten.schwarz &&
+        move.G.markt.reihen[reiheID][positionID].Preis.weiss <=
+          AnzahlHandKarten.weiss
       ) {
-        if (reiheID == "reihe1") {
-          move.G.markt.reihe1.splice(positionID, 1);
-          move.G.markt.reihe1.splice(positionID, 0, Seltenheit1Deck.pop());
-        } else if (reiheID == "reihe2") {
-          move.G.markt.reihe2.splice(positionID, 1);
-          move.G.markt.reihe2.splice(positionID, 0, Seltenheit2Deck.pop());
-        } else if (reiheID == "reihe3") {
-          move.G.markt.reihe3.splice(positionID, 1);
-          move.G.markt.reihe3.splice(positionID, 0, Seltenheit3Deck.pop());
+        if (reiheID == 0) {
+          move.G.markt.reihen[reiheID].splice(positionID, 1);
+          move.G.markt.reihen[reiheID].splice(
+            positionID,
+            0,
+            Seltenheit1Deck.pop()
+          );
+        } else if (reiheID == 1) {
+          move.G.markt.reihen[reiheID].splice(positionID, 1);
+          move.G.markt.reihen[reiheID].splice(
+            positionID,
+            0,
+            Seltenheit2Deck.pop()
+          );
+        } else if (reiheID == 2) {
+          move.G.markt.reihen[reiheID].splice(positionID, 1);
+          move.G.markt.reihen[reiheID].splice(
+            positionID,
+            0,
+            Seltenheit3Deck.pop()
+          );
         }
 
-        Spielerhand.karten.push(karteID);
+        Spielerhand.karten.push(move.G.reihen[reiheID][positionID]);
       } else if (
-        karteID.Preis.gruen <=
-          AnzahlHandKarten.gruen + Spielerhand.chips.gruen &&
-        karteID.Preis.rot <= AnzahlHandKarten.rot + Spielerhand.chips.rot &&
-        karteID.Preis.weiss <=
-          AnzahlHandKarten.weiss + Spielerhand.chips.weiss &&
-        karteID.Preis.schwarz <=
-          AnzahlHandKarten.schwarz + Spielerhand.chips.schwarz &&
-        karteID.Preis.blau <= AnzahlHandKarten.blau + Spielerhand.chips.blau
+        move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
+          AnzahlHandKarten.gruen + Spielerhand.Chips.gruen &&
+        move.G.markt.reihen[reiheID][positionID].Preis.rot <=
+          AnzahlHandKarten.rot + Spielerhand.Chips.rot &&
+        move.G.markt.reihen[reiheID][positionID].Preis.weiss <=
+          AnzahlHandKarten.weiss + Spielerhand.Chips.weiss &&
+        move.G.markt.reihen[reiheID][positionID].Preis.schwarz <=
+          AnzahlHandKarten.schwarz + Spielerhand.Chips.schwarz &&
+        move.G.markt.reihen[reiheID][positionID].Preis.blau <=
+          AnzahlHandKarten.blau + Spielerhand.Chips.blau
       ) {
-        if (reiheID == "reihe1") {
-          move.G.markt.reihe1.splice(positionID, 1);
-          move.G.markt.reihe1.splice(positionID, 0, Seltenheit1Deck.pop());
-        } else if (reiheID == "reihe2") {
-          move.G.markt.reihe2.splice(positionID, 1);
-          move.G.markt.reihe2.splice(positionID, 0, Seltenheit2Deck.pop());
-        } else if (reiheID == "reihe3") {
-          move.G.markt.reihe3.splice(positionID, 1);
-          move.G.markt.reihe3.splice(positionID, 0, Seltenheit3Deck.pop());
+        if (reiheID == 0) {
+          move.G.markt.reihen[reiheID].splice(positionID, 1);
+          move.G.markt.reihen[reiheID].splice(
+            positionID,
+            0,
+            Seltenheit1Deck.pop()
+          );
+        } else if (reiheID == 1) {
+          move.G.markt.reihen[reiheID].splice(positionID, 1);
+          move.G.markt.reihen[reiheID].splice(
+            positionID,
+            0,
+            Seltenheit2Deck.pop()
+          );
+        } else if (reiheID == 2) {
+          move.G.markt.reihen[reiheID].splice(positionID, 1);
+          move.G.markt.reihen[reiheID].splice(
+            positionID,
+            0,
+            Seltenheit3Deck.pop()
+          );
         }
-        Spielerhand.karten.push(karteID);
 
-        if (karteID.Preis.gruen - AnzahlHandKarten.gruen > 0) {
-          g.chips.gruen =
+        Spielerhand.karten.push(move.G.reihen[reiheID][positionID]);
+
+        if (
+          move.G.reihen[reiheID][positionID].Preis.gruen -
+            AnzahlHandKarten.gruen >
+          0
+        ) {
+          Spielerhand.chips.gruen =
             Spielerhand.chips.gruen -
-            (karteID.Preis.gruen - AnzahlHandKarten.gruen);
+            (move.G.reihen[reiheID][positionID].Preis.gruen -
+              AnzahlHandKarten.gruen);
         }
-        if (karteID.Preis.rot - AnzahlHandKarten.rot > 0) {
+        if (
+          move.G.reihen[reiheID][positionID].Preis.rot - AnzahlHandKarten.rot >
+          0
+        ) {
           Spielerhand.chips.rot =
-            Spielerhand.chips.rot - (karteID.Preis.rot - AnzahlHandKarten.rot);
+            Spielerhand.chips.rot -
+            (move.G.reihen[reiheID][positionID].Preis.rot -
+              AnzahlHandKarten.rot);
         }
-        if (karteID.Preis.weiss - AnzahlHandKarten.weiss > 0) {
+        if (
+          move.G.reihen[reiheID][positionID].Preis.weiss -
+            AnzahlHandKarten.weiss >
+          0
+        ) {
           Spielerhand.chips.weiss =
             Spielerhand.chips.weiss -
-            (karteID.Preis.weiss - AnzahlHandKarten.weiss);
+            (move.G.reihen[reiheID][positionID].Preis.weiss -
+              AnzahlHandKarten.weiss);
         }
-        if (karteID.Preis.schwarz - AnzahlHandKarten.schwarz > 0) {
+        if (
+          move.G.reihen[reiheID][positionID].Preis.schwarz -
+            AnzahlHandKarten.schwarz >
+          0
+        ) {
           Spielerhand.chips.schwarz =
             Spielerhand.chips.schwarz -
-            (karteID.Preis.schwarz - AnzahlHandKarten.schwarz);
+            (move.G.reihen[reiheID][positionID].Preis.schwarz -
+              AnzahlHandKarten.schwarz);
         }
-        if (karteID.Preis.blau - AnzahlHandKarten.blau > 0) {
+        if (
+          move.G.reihen[reiheID][positionID].Preis.blau -
+            AnzahlHandKarten.blau >
+          0
+        ) {
           Spielerhand.chips.blau =
             Spielerhand.chips.blau -
-            (karteID.Preis.blau - AnzahlHandKarten.blau);
+            (move.G.reihen[reiheID][positionID].Preis.blau -
+              AnzahlHandKarten.blau);
         }
       } else {
         console.log("Nicht genug Ressourcen!");

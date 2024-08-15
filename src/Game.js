@@ -403,18 +403,18 @@ export const Game = {
       }
     },
 
-    zweiChipsZiehen(move, colour) {
-      let chipsGesamtSpieler =
-        move.G.einzelneSpielerHaende.Chips.gruen + //weitermachen nur ein Spieler!
-        Chips.rot +
-        Chips.blau +
-        Chips.weiss +
-        Chips.schwarz +
-        Chips.gelb;
-      console.log(chipsGesamtSpieler);
-      if (marktChips.colour >= 4) {
-      }
-    },
+    // zweiChipsZiehen(move, colour) {
+    //   let chipsGesamtSpieler =
+    //     move.G.einzelneSpielerHaende.Chips.gruen + //weitermachen nur ein Spieler!
+    //     Chips.rot +
+    //     Chips.blau +
+    //     Chips.weiss +
+    //     Chips.schwarz +
+    //     Chips.gelb;
+    //   console.log(chipsGesamtSpieler);
+    //   if (marktChips.colour >= 4) {
+    //   }
+    // },
   },
 
   seed: "random-seed",

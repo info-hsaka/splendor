@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "HSAKA Boardgame",
   "scripts": {
+    "build": "vite build",
     "start": "npm run frontend",
     "multiplayer": "cross-env NODE_NO_WARNINGS=1 VITE_REMOTE=true concurrently -n frontend,server -c blue,green \"npm run frontend\" \"npm run server\"",
     "frontend": "vite --host 0.0.0.0 --port 3000 --open",
@@ -12,6 +13,7 @@
     "boardgame.io": "0.50.2",
     "concurrently": "8.2.2",
     "cross-env": "7.0.3",
+    "koa-static": "^5.0.0",
     "tsx": "4.7.2",
     "vite": "5.2.9"
   },
@@ -19,5 +21,9 @@
     "@eslint/js": "^9.9.0",
     "eslint": "^9.9.0",
     "globals": "^15.9.0"
+  },
+  "engines": {
+    "node": "22.6",
+    "npm": "10.8"
   }
 }

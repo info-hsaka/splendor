@@ -169,22 +169,46 @@ export const Game = {
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           }, //karten aus seltenheit 1 als beispiel
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
         ],
         //reihe2
@@ -192,22 +216,46 @@ export const Game = {
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           }, //karten aus seltenheit 1 als beispiel
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
         ],
         //reihe3
@@ -215,22 +263,46 @@ export const Game = {
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           }, //karten aus seltenheit 1 als beispiel
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
           {
             farbe: "blau",
             Siegpunkte: 2,
-            Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+            Preis: {
+              rot: 1,
+              gruen: 3,
+              blau: 2,
+              weiss: 0,
+              schwarz: 0,
+            },
           },
         ],
       ],

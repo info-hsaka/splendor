@@ -192,6 +192,29 @@ export const Game = {
                 },
             ],
 
+            reihe1: [
+                {
+                    farbe: "blau",
+                    Siegpunkte: 2,
+                    Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+                }, //karten aus seltenheit 1 als beispiel
+                {
+                    farbe: "blau",
+                    Siegpunkte: 2,
+                    Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+                },
+                {
+                    farbe: "blau",
+                    Siegpunkte: 2,
+                    Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+                },
+                {
+                    farbe: "blau",
+                    Siegpunkte: 2,
+                    Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+                },
+            ],
+
             reihe2: [
                 {
                     farbe: "blau",
@@ -264,7 +287,7 @@ export const Game = {
         return {
             reihe1: reihe1,
             reihe2: reihe2,
-            erihe3: reihe3,
+            reihe3: reihe3,
             reiheNobles: reiheNobles,
             markt: markt,
             einzelneSpielerHaende: einzelneSpielerHaende,

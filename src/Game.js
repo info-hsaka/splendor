@@ -178,7 +178,7 @@ export const Game = {
             },
           }, //karten aus seltenheit 1 als beispiel
           {
-            farbe: "blau",
+            farbe: "schwarz",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -189,7 +189,7 @@ export const Game = {
             },
           },
           {
-            farbe: "blau",
+            farbe: "weiss",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -200,7 +200,7 @@ export const Game = {
             },
           },
           {
-            farbe: "blau",
+            farbe: "rot",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -225,7 +225,7 @@ export const Game = {
             },
           }, //karten aus seltenheit 1 als beispiel
           {
-            farbe: "blau",
+            farbe: "gruen",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -236,7 +236,7 @@ export const Game = {
             },
           },
           {
-            farbe: "blau",
+            farbe: "schwarz",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -247,7 +247,7 @@ export const Game = {
             },
           },
           {
-            farbe: "blau",
+            farbe: "weiss",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -261,7 +261,7 @@ export const Game = {
         //reihe3
         [
           {
-            farbe: "blau",
+            farbe: "rot",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -283,7 +283,7 @@ export const Game = {
             },
           },
           {
-            farbe: "blau",
+            farbe: "schwarz",
             Siegpunkte: 2,
             Preis: {
               rot: 1,
@@ -294,7 +294,7 @@ export const Game = {
             },
           },
           {
-            farbe: "blau",
+            farbe: "gruen",
             Siegpunkte: 2,
             Preis: {
               rot: 1,

@@ -1,25 +1,34 @@
-import { Client } from "boardgame.io/client"
-import { Local, SocketIO } from "boardgame.io/multiplayer"
-import { resetOnClicks } from "./canvas"
-import { Game } from "./Game"
+import { Client } from "boardgame.io/client";
+import { Local, SocketIO } from "boardgame.io/multiplayer";
+import { resetOnClicks } from "./canvas";
+import { Game } from "./Game";
+import { Debug } from "boardgame.io/debug";
 
-const isMultiplayer = import.meta.env.VITE_REMOTE === "true"
+const isMultiplayer = import.meta.env.VITE_REMOTE === "true";
+const multiplayerServer =
+  import.meta.env.VITE_MUTLIPLAYER_SERVER ?? "localhost:8000";
 
 const multiplayer = isMultiplayer
-    ? SocketIO({ server: "localhost:8000" })
-    : Local()
+  ? SocketIO({ server: multiplayerServer })
+  : Local();
 
 class GameClient {
-    constructor(rootElement) {
-        this.rootElement = rootElement
+  constructor(rootElement) {
+    this.rootElement = rootElement;
 
-        this.client = Client({
-            game: Game,
-        })
+    this.client = Client({
+      game: Game,
+      multiplayer: isMultiplayer ? multiplayer : undefined,
+      debug: {
+        collapseOnLoad: false,
+        hideToggleButton: false,
+        impl: Debug,
+      },
+    });
 
-        this.client.subscribe((state) => this.update(state))
-        this.client.start()
-    }
+    this.client.subscribe((state) => this.update(state));
+    this.client.start();
+  }
 
     update(state) {
         const canvas = document.getElementById("canvas")
@@ -74,5 +83,5 @@ class GameClient {
     }
 }
 
-const appElement = document.getElementById("app")
-const app = new GameClient(appElement)
+const appElement = document.getElementById("app");
+const app = new GameClient(appElement);

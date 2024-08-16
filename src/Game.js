@@ -137,14 +137,7 @@ export const Game = {
         }
 
         const markt = {
-            chipsreservoir: {
-                gruen: 7,
-                blau: 7,
-                schwarz: 7,
-                rot: 7,
-                weiss: 7,
-                gelb: 5,
-            },
+            marktChips: ChipsReservoir,
 
             reiheNobles: [
                 {
@@ -166,18 +159,18 @@ export const Game = {
                 [
                     {
                         farbe: "blau",
-                        Siegpunkte: 2,
+                        Siegpunkte: 1,
                         Preis: {
                             rot: 1,
                             gruen: 3,
                             blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
+                            weiss: 8,
+                            schwarz: 1,
                         },
                     }, //karten aus seltenheit 1 als beispiel
                     {
                         farbe: "schwarz",
-                        Siegpunkte: 2,
+                        Siegpunkte: 1,
                         Preis: {
                             rot: 1,
                             gruen: 3,
@@ -188,18 +181,18 @@ export const Game = {
                     },
                     {
                         farbe: "weiss",
-                        Siegpunkte: 2,
+                        Siegpunkte: 0,
                         Preis: {
                             rot: 1,
                             gruen: 3,
                             blau: 2,
                             weiss: 0,
-                            schwarz: 0,
+                            schwarz: 7,
                         },
                     },
                     {
                         farbe: "rot",
-                        Siegpunkte: 2,
+                        Siegpunkte: 0,
                         Preis: {
                             rot: 1,
                             gruen: 3,
@@ -213,12 +206,12 @@ export const Game = {
                 [
                     {
                         farbe: "blau",
-                        Siegpunkte: 2,
+                        Siegpunkte: 1,
                         Preis: {
                             rot: 1,
                             gruen: 3,
-                            blau: 2,
-                            weiss: 0,
+                            blau: 0,
+                            weiss: 8,
                             schwarz: 0,
                         },
                     }, //karten aus seltenheit 1 als beispiel
@@ -266,7 +259,7 @@ export const Game = {
                             gruen: 3,
                             blau: 2,
                             weiss: 0,
-                            schwarz: 0,
+                            schwarz: 4,
                         },
                     }, //karten aus seltenheit 1 als beispiel
                     {
@@ -538,8 +531,6 @@ export const Game = {
                 } */
         },
 
-       
-
         // zweichipsZiehen(move, colour) {
         //   let chipsGesamtSpieler =
         //     move.G.einzelneSpielerHaende.chips.gruen + //weitermachen nur ein Spieler!
@@ -573,8 +564,8 @@ export const Game = {
 
     endIf: (endIf) => {},
 };
- export function auswahlResKaufFenster(i, j) {
-            const canvas = document.getElementById("canvas");
-            const ctx = canvas.getContext("2d");
-            ctx.fillRect(125 + i * 110 + 100, 25 + j * 160, 100, 50);
-        },
+export function auswahlResKaufFenster(i, j) {
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillRect(125 + i * 110 + 100, 25 + j * 160, 100, 50);
+}

@@ -52,7 +52,7 @@ canvas.addEventListener(
                 y > element.y &&
                 y < element.y + element.height &&
                 x > element.x &&
-                x < element.z + element.width
+                x < element.x + element.width
             ) {
                 called = true
                 if (debug) {

@@ -31,8 +31,13 @@ class GameClient {
   }
 
     update(state) {
+
         const canvas = document.getElementById("canvas")
         const ctx = canvas.getContext("2d")
+
+    
+
+        
         // Reihe Seltenheit 1
         ctx.fillStyle = "rgb(75, 139, 59)"
         ctx.fillRect(5, 25, 100, 150)
@@ -58,16 +63,23 @@ class GameClient {
             } else if (karte.farbe == "blau") {
                 ctx.fillStyle = "rgb(0 ,150,200)"
             }
-
+            
             ctx.fillRect(125 + i * 110, 25 + j * 160, 100, 150)
             console.log(125 + i * 110, 25 + j * 160, 100, 150)
             ctx.strokeRect(125 + i * 110, 25 + j * 160, 100, 150)
+
+            siegpunkteZeichnen(i, j, karte)
         }
 
         function siegpunkteZeichnen(i, j, karte) {
-            if (karte.Siegpunkte == ) {
-
+            if (karte.Siegpunkte != 0) {
+                ctx.font = "30px American Typewriter";
+                ctx.fillStyle = "rgb(255, 255, 255)"
+                ctx.fillText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160)
+                ctx.strokeText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160)
             }
+
+          
         }
         console.log(state.G.markt)
         //state.G["reihe1"]
@@ -76,11 +88,49 @@ class GameClient {
             console.log(reihe, j)
             for (let i in state.G.markt.reihen[j]) {
                 const karte = reihe[i]
-                console.log(karte)
                 KarteMalen(i, j, karte)
+
             }
         }
+
+        //blau
+        ctx.beginPath();
+        ctx.arc(137.5, 162.5, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "rgb(0,0, 255)"
+        ctx.fill()
+
+        //weiß
+        ctx.beginPath();
+        ctx.arc(137.5, 140, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "rgb(255, 255, 255)"
+        ctx.fill()
+
+        //grün
+        ctx.beginPath();
+        ctx.arc(137.5, 117.5, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "rgb(0, 255, 0)"
+        ctx.fill()
+
+        //rot
+        ctx.beginPath();
+        ctx.arc(137.5, 95, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "rgb(255 ,0, 0)"
+        ctx.fill()
+
+        //schwarz
+        ctx.beginPath();
+        ctx.arc(137.5, 72.5, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "rgb(0,0, 0)"
+        ctx.fill()
+
+
     }
+
 }
 
 const appElement = document.getElementById("app");

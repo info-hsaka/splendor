@@ -1,0 +1,25 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+      - deployment
+
+jobs:
+  deploy:
+    environment: dev
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Cloning repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Dokku
+        uses: dokku/github-action@v1.5.0
+        with:
+          branch: main
+          git_remote_url: "ssh://dokku@burg.games/${{ vars.GAME_APP_NAME }}"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          git_push_flags: "--force"
+

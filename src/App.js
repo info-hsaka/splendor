@@ -69,6 +69,7 @@ class GameClient {
             ctx.strokeRect(125 + i * 110, 25 + j * 160, 100, 150)
 
             siegpunkteZeichnen(i, j, karte)
+            preisVisualisierung(i, j, karte)
         }
 
         function siegpunkteZeichnen(i, j, karte) {
@@ -81,6 +82,77 @@ class GameClient {
 
           
         }
+
+        function preisVisualisierung(i, j, karte) {
+                ctx.font = "15px American Typewriter";
+                ctx.fillStyle = "rgb(255, 255, 255)"
+            if (karte.Preis.blau > 0) {
+                ctx.beginPath();
+                ctx.arc(137.5 + i * 110, 162.5 + j * 160, 10, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke()
+                ctx.fillStyle = "rgb(0,0, 255)"
+                ctx.fill()
+
+
+                ctx.fillStyle = "rgb(255, 255, 255)"
+                ctx.fillText(karte.Preis.blau, 134 + i * 110, 167.5 + j * 160)
+                ctx.strokeText(karte.Preis.blau, 134 + i * 110, 167.5 + j * 160)
+
+            }  
+            if (karte.Preis.weiss > 0) {
+                ctx.beginPath();
+                ctx.arc(137.5 + i * 110, 140 + j * 160, 10, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke()
+                ctx.fillStyle = "rgb(255,255, 255)"
+                ctx.fill()
+
+
+                ctx.fillStyle = "rgb(255, 255, 255)"
+                ctx.fillText(karte.Preis.weiss, 134 + i * 110, 145 + j * 160)
+                ctx.strokeText(karte.Preis.weiss, 134 + i * 110, 145 + j * 160)
+
+            }
+            if (karte.Preis.gruen > 0) {
+                ctx.beginPath();
+                ctx.arc(137.5 + i * 110, 117.5 + j * 160, 10, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke()
+                ctx.fillStyle = "rgb(0, 255, 0)"
+                ctx.fill()
+
+
+                ctx.fillStyle = "rgb(255, 255, 255)"
+                ctx.fillText(karte.Preis.gruen, 134 + i * 110, 122.5 + j * 160)
+                ctx.strokeText(karte.Preis.gruen, 134 + i * 110, 122.5 + j * 160)
+
+            }
+            if (karte.Preis.rot > 0) {
+                ctx.beginPath();
+                ctx.arc(137.5 + i * 110, 94.5 + j * 160, 10, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke()
+                ctx.fillStyle = "rgb(255, 0, 0)"
+                ctx.fill()
+
+
+                ctx.fillStyle = "rgb(255, 255, 255)"
+                ctx.fillText(karte.Preis.rot, 134 + i * 110, 100 + j * 160)
+                ctx.strokeText(karte.Preis.rot, 134 + i * 110, 100 + j * 160)
+
+            }
+            if (karte.Preis.schwarz > 0) {
+                ctx.beginPath();
+                ctx.arc(137.5 + i * 110, 72 + j * 160, 10, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke()
+                ctx.fillStyle = "rgb(0, 0, 0)"
+                ctx.fill()
+
+
+                ctx.fillStyle = "rgb(255, 255, 255)"
+                ctx.fillText(karte.Preis.schwarz, 134 + i * 110, 78 + j * 160)
+                //ctx.strokeText(karte.Preis.schwarz, 134 + i * 110, 122,5 + j * 160)
+
+            } 
+        }
+
         console.log(state.G.markt)
         //state.G["reihe1"]
         for (let j in state.G.markt.reihen) {
@@ -93,42 +165,50 @@ class GameClient {
             }
         }
 
-        //blau
+
+
+
+
+
+
+
+        //chips
+
         ctx.beginPath();
-        ctx.arc(137.5, 162.5, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.arc(600, 122.5 , 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke()
-        ctx.fillStyle = "rgb(0,0, 255)"
+        ctx.fillStyle = "yellow"
         ctx.fill()
 
-        //weiß
         ctx.beginPath();
-        ctx.arc(137.5, 140, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke()
-        ctx.fillStyle = "rgb(255, 255, 255)"
+        ctx.fillStyle = "blue"
         ctx.fill()
 
-        //grün
         ctx.beginPath();
-        ctx.arc(137.5, 117.5, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.arc(600, 230, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke()
-        ctx.fillStyle = "rgb(0, 255, 0)"
+        ctx.fillStyle = "grey"
         ctx.fill()
 
-        //rot
         ctx.beginPath();
-        ctx.arc(137.5, 95, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.arc(600, 284, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke()
-        ctx.fillStyle = "rgb(255 ,0, 0)"
+        ctx.fillStyle = "green"
         ctx.fill()
 
-        //schwarz
         ctx.beginPath();
-        ctx.arc(137.5, 72.5, 10, 0, Math.PI * 2, true); // Outer circle
+        ctx.arc(600, 338, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke()
-        ctx.fillStyle = "rgb(0,0, 0)"
+        ctx.fillStyle = "red"
         ctx.fill()
 
-
+        ctx.beginPath();
+        ctx.arc(600, 392, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "black"
+        ctx.fill()
     }
 
 }

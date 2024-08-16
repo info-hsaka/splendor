@@ -173,8 +173,8 @@ export const Game = {
               rot: 1,
               gruen: 3,
               blau: 2,
-              weiss: 0,
-              schwarz: 0,
+              weiss: 8,
+              schwarz: 1,
             },
           }, //karten aus seltenheit 1 als beispiel
           {
@@ -196,7 +196,7 @@ export const Game = {
               gruen: 3,
               blau: 2,
               weiss: 0,
-              schwarz: 0,
+              schwarz: 7,
             },
           },
           {
@@ -219,8 +219,8 @@ export const Game = {
             Preis: {
               rot: 1,
               gruen: 3,
-              blau: 2,
-              weiss: 0,
+              blau: 0,
+              weiss: 8,
               schwarz: 0,
             },
           }, //karten aus seltenheit 1 als beispiel
@@ -268,7 +268,7 @@ export const Game = {
               gruen: 3,
               blau: 2,
               weiss: 0,
-              schwarz: 0,
+              schwarz: 4,
             },
           }, //karten aus seltenheit 1 als beispiel
           {

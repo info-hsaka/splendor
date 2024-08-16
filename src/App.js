@@ -38,28 +38,40 @@ class GameClient {
         ctx.fillRect(15, 25, 100, 150)
         ctx.strokeRect(15, 25, 100, 150)
 
-        function KarteMalen(i, karte) {
-            if (karte.Farbe == "schwarz") {
+        ctx.fillStyle = "rgb(248, 244, 236)"
+        ctx.fillRect(15, 185, 100, 150)
+        ctx.strokeRect(15, 185, 100, 150)
+
+        ctx.fillStyle = "rgb(248, 244, 236)"
+        ctx.fillRect(15, 345, 100, 150)
+        ctx.strokeRect(15, 345, 100, 150)
+
+        function KarteMalen(i, j, karte) {
+            if (karte.farbe == "schwarz") {
                 ctx.fillStyle = "rgb(46,41,65)"
-            } else if (karte.Farbe == "rot") {
+            } else if (karte.farbe == "rot") {
                 ctx.fillStyle = "rgb(200,50,00"
-            } else if (karte.Farbe == "gruen") {
+            } else if (karte.farbe == "gruen") {
                 ctx.fillStyle = "rgb(80,200,120)"
-            } else if (karte.Farbe == "weiss") {
+            } else if (karte.farbe == "weiss") {
                 ctx.fillStyle = "rgb(248, 244, 236)"
-            } else if (karte.Farbe == "blau") {
+            } else if (karte.farbe == "blau") {
                 ctx.fillStyle = "rgb(0 ,150,200)"
             }
 
-            ctx.fillRect(125 + i * 110, 25, 100, 150)
-            ctx.strokeRect(125 + i * 110, 25, 100, 150)
+            ctx.fillRect(125 + i * 110, 25 + j * 160, 100, 150)
+            console.log(125 + i * 110, 25 + j * 160, 100, 150)
+            ctx.strokeRect(125 + i * 110, 25 + j * 160, 100, 150)
         }
+        console.log(state.G.markt)
         //state.G["reihe1"]
-        for (let reihenname in ["reihe1", "reihe2", "reihe3"]) {
-            for (let i in state.G[reihenname]) {
-                const karte = state.G.reihe1[i]
-
-                KarteMalen(i, karte)
+        for (let j in state.G.markt.reihen) {
+            const reihe = state.G.markt.reihen[j]
+            console.log(reihe, j)
+            for (let i in state.G.markt.reihen[j]) {
+                const karte = reihe[i]
+                console.log(karte)
+                KarteMalen(i, j, karte)
             }
         }
     }

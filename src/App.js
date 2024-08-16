@@ -25,17 +25,17 @@ class GameClient {
         const canvas = document.getElementById("canvas")
         const ctx = canvas.getContext("2d")
         // Reihe Seltenheit 1
-        ctx.fillStyle = "rgb(248, 244, 236)"
-        ctx.fillRect(15, 25, 100, 150)
-        ctx.strokeRect(15, 25, 100, 150)
+        ctx.fillStyle = "rgb(75, 139, 59)"
+        ctx.fillRect(5, 25, 100, 150)
+        ctx.strokeRect(5, 25, 100, 150)
 
-        ctx.fillStyle = "rgb(248, 244, 236)"
-        ctx.fillRect(15, 185, 100, 150)
-        ctx.strokeRect(15, 185, 100, 150)
+        ctx.fillStyle = "rgb(184, 156, 80)"
+        ctx.fillRect(5, 185, 100, 150)
+        ctx.strokeRect(5, 185, 100, 150)
 
-        ctx.fillStyle = "rgb(248, 244, 236)"
-        ctx.fillRect(15, 345, 100, 150)
-        ctx.strokeRect(15, 345, 100, 150)
+        ctx.fillStyle = "#003781"
+        ctx.fillRect(5, 345, 100, 150)
+        ctx.strokeRect(5, 345, 100, 150)
 
         function KarteMalen(i, j, karte) {
             if (karte.farbe == "schwarz") {
@@ -53,6 +53,12 @@ class GameClient {
             ctx.fillRect(125 + i * 110, 25 + j * 160, 100, 150)
             console.log(125 + i * 110, 25 + j * 160, 100, 150)
             ctx.strokeRect(125 + i * 110, 25 + j * 160, 100, 150)
+        }
+
+        function siegpunkteZeichnen(i, j, karte) {
+            if (karte.Siegpunkte == ) {
+
+            }
         }
         console.log(state.G.markt)
         //state.G["reihe1"]

@@ -262,7 +262,7 @@ class GameClient {
             }
         }
 
-        function chipsSpielerhand() {
+        function chipsSpielerhand() { // Koordinaten ändern
             
             if (chipsReservoir.blau > 0) {
                 ctx.beginPath();

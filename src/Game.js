@@ -109,6 +109,13 @@ const Seltenheit3Deck = [
         Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
     }, // keine echte Karte nur beispiel
 ];
+const chipsReservoir = [
+    {
+        chipFarbe: { rot: 7, gruen: 7, blau: 7, weiss: 7, schwarz: 7, gelb: 5 },
+    },
+];
+
+console.log(Seltenheit1Deck[0]);
 
 function SpielerSetup() {
     const SpielerHandStart = {
@@ -135,7 +142,7 @@ export const Game = {
         }
 
         const markt = {
-            marktChips: chipsreservoir,
+            marktChips: chipsReservoir,
 
             reiheNobles: [
                 {
@@ -514,10 +521,10 @@ export const Game = {
                 Spielerhand.reservierteKarten.push(
                     move.G.reihen[reiheID][positionID]
                 );
-                if (move.G.markt.chipsreservoir.gelb > 0) {
+                if (move.G.markt.chipsReservoir.gelb > 0) {
                     Spielerhand.chips.gelb = Spielerhand.chips.gelb + 1;
-                    move.G.markt.chipsreservoir.gelb =
-                        move.G.markt.chipsreservoir.gelb - 1;
+                    move.G.markt.chipsReservoir.gelb =
+                        move.G.markt.chipsReservoir.gelb - 1;
                 } else console.log("Keine gelben Chips mehr verfügbar!");
             } else
                 console.log(

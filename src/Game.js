@@ -109,6 +109,7 @@ const Seltenheit3Deck = [
         Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
     }, // keine echte Karte nur beispiel
 ];
+
 const chipsReservoir = {
     rot: 7,
     gruen: 7,
@@ -143,6 +144,10 @@ export const Game = {
         }
 
         const markt = {
+
+          
+            
+
             marktChips: chipsReservoir,
 
             reiheNobles: [
@@ -332,6 +337,8 @@ export const Game = {
             reiheNobles: reiheNobles,
             markt: markt,
             einzelneSpielerHaende: einzelneSpielerHaende,
+            chipsReservoir : chipsReservoir,
+
         };
     },
 

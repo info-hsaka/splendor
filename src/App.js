@@ -278,20 +278,51 @@ class GameClient {
             }
         }
         //nobles
-        ctx.fillStyle = "rgb(75, 139, 59)";
+        ctx.fillStyle = "rgb(200, 200, 200)";
         ctx.fillRect(666, 105, 90, 90);
         ctx.strokeRect(666, 105, 90, 90);
+        ctx.font = "30px American Typewriter";
+        ctx.fillStyle = "rgb(100, 100, 100) ";
+        ctx.fillText(3, 670, 130);
+        ctx.fillStyle = "rgb(50, 50, 50)";
+        ctx.fillRect(668, 172.5, 15, 20);
 
-        ctx.fillStyle = "rgb(75, 139, 59)";
-        ctx.fillRect(666, 105, 90, 90);
-        ctx.strokeRect(666, 105, 90, 90);
 
-        ctx.fillStyle = "rgb(75, 139, 59)";
-        ctx.fillRect(666, 105, 90, 90);
-        ctx.strokeRect(666, 105, 90, 90);
+        ctx.fillStyle = "rgb(200, 200, 200)";
+        ctx.fillRect(666, 213, 90, 90);
+        ctx.strokeRect(666, 213, 90, 90);
+        ctx.font = "30px American Typewriter";
+        ctx.fillStyle = "rgb(100, 100, 100)";
+        ctx.fillText(3, 670, 238);
+
+        ctx.fillStyle = "rgb(200, 200, 200)";
+        ctx.fillRect(666, 321, 90, 90);
+        ctx.strokeRect(666, 321, 90, 90);
+        ctx.font = "30px American Typewriter";
+        ctx.fillStyle = "rgb(100, 100, 100)";
+        ctx.fillText(3, 670, 346);
+        
+        // Spielerhaende
+
+        ctx.fillStyle = "rgb(225, 225, 225)";
+        ctx.fillRect(800, 25, 750, 400);
+        ctx.strokeRect(800, 25, 750, 400);
+
+        ctx.fillStyle = "rgb(225, 225, 225)";
+        ctx.fillRect(800, 475, 750, 400);
+        ctx.strokeRect(800, 475, 750, 400);
+
+        ctx.fillStyle = "rgb(225, 225, 225)";
+        ctx.fillRect(800, 925, 750, 400);
+        ctx.strokeRect(800, 925, 750, 400);
+
+        ctx.fillStyle = "rgb(225, 225, 225)";
+        ctx.fillRect(800, 1375, 750, 400);
+        ctx.strokeRect(800, 1375, 750, 400);
 
     }
 }
 
 const appElement = document.getElementById("app");
 const app = new GameClient(appElement);
+800

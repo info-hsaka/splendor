@@ -569,8 +569,3 @@ export const Game = {
 
     endIf: (endIf) => {},
 };
-export function auswahlResKaufFenster(i, j) {
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-    ctx.fillRect(125 + i * 110 + 100, 25 + j * 160, 100, 50);
-}

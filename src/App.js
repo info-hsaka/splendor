@@ -1,7 +1,7 @@
 import { Client } from "boardgame.io/client";
 import { Local, SocketIO } from "boardgame.io/multiplayer";
 import { resetOnClicks, onClick } from "./canvas";
-import { Game } from "./Game";
+import { Game, karteReservieren, karteKaufen } from "./Game";
 import { Debug } from "boardgame.io/debug";
 
 const isMultiplayer = import.meta.env.VITE_REMOTE === "true";
@@ -31,9 +31,13 @@ class GameClient {
     }
 
     update(state) {
+        resetOnClicks();
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
+        const self = this;
 
+        ctx.fillStyle = "rgb(255,255,255)";
+        ctx.fillRect(0, 0, 100000, 1000000);
         // Reihe Seltenheit 1
         ctx.fillStyle = "rgb(75, 139, 59)";
         ctx.fillRect(5, 25, 100, 150);
@@ -59,18 +63,41 @@ class GameClient {
             } else if (karte.farbe == "blau") {
                 ctx.fillStyle = "rgb(0 ,150,200)";
             }
-            onClick(125 + i * 110, 25 + j * 160, 100, 150, () => {
-                auswahlResKaufFenster;
-            });
 
             ctx.fillRect(125 + i * 110, 25 + j * 160, 100, 150);
             console.log(125 + i * 110, 25 + j * 160, 100, 150);
             ctx.strokeRect(125 + i * 110, 25 + j * 160, 100, 150);
 
+            function resKaufFenster(i, j) {
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.strokeStyle = "rgb(0,0,0)";
+                ctx.fillRect(125 + i * 110 + 100, 25 + j * 160, 100, 50);
+                ctx.strokeRect(125 + i * 110 + 100, 25 + j * 160, 100, 25);
+                ctx.fillStyle = "rgb(0,0,0)";
+                ctx.font = "20px American Typewriter";
+                ctx.fillText(
+                    "Reservieren",
+                    125 + i * 110 + 102,
+                    25 + j * 160 + 20
+                );
+                ctx.strokeRect(125 + i * 110 + 100, 25 + j * 160 + 25, 100, 25);
+                ctx.fillStyle = "rgb(0,0,0)";
+                ctx.font = "20px American Typewriter";
+                ctx.fillText("Kaufen", 125 + i * 110 + 102, 25 + j * 160 + 44);
+            }
+            let a = 0;
+            onClick(125 + i * 110, 25 + j * 160, 100, 150, () => {
+                if (a == 0) {
+                    resKaufFenster(i, j);
+                    a = 1;
+                } else {
+                    self.update(state);
+                }
+            });
+
             siegpunkteZeichnen(i, j, karte);
             preisVisualisierung(i, j, karte);
         }
-
         function siegpunkteZeichnen(i, j, karte) {
             if (karte.Siegpunkte != 0) {
                 ctx.font = "30px American Typewriter";

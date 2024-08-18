@@ -143,7 +143,7 @@ class GameClient {
             });
 
             ctx.fillRect(125 + i * 110, 25 + j * 160, 100, 150);
-            console.log(125 + i * 110, 25 + j * 160, 100, 150);
+            //console.log(125 + i * 110, 25 + j * 160, 100, 150);
             ctx.strokeRect(125 + i * 110, 25 + j * 160, 100, 150);
 
             siegpunkteZeichnen(i, j, karte);
@@ -262,16 +262,93 @@ class GameClient {
             }
         }
 
-        console.log(state.G.markt);
+        function chipsSpielerhand() {
+            
+            if (chipsReservoir.blau > 0) {
+                ctx.beginPath();
+                ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "blue";
+                ctx.fill();
+                ctx.font = "30px American Typewriter"; 
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(chipsReservoir.blau, 635, 186.5);
+
+            }
+
+            if (chipsReservoir.gelb > 0) {
+                ctx.beginPath();
+                ctx.arc(600, 122.5, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "yellow";
+                ctx.fill();
+                ctx.font = "30px American Typewriter"; 
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(chipsReservoir.gelb, 635, 132.5);
+
+            }
+
+            if (chipsReservoir.weiss > 0) {
+                ctx.beginPath();
+                ctx.arc(600, 230, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "grey";
+                ctx.fill();
+                ctx.font = "30px American Typewriter"; 
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(chipsReservoir.weiss, 635, 240.5);
+
+            }
+            if (chipsReservoir.gruen > 0) {
+                ctx.beginPath();
+                ctx.arc(600, 284, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "green";
+                ctx.fill();
+                ctx.font = "30px American Typewriter"; 
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(chipsReservoir.gruen, 635, 294.5);
+
+            }
+            if (chipsReservoir.rot > 0) {
+                ctx.beginPath();
+                ctx.arc(600, 338, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "red";
+                ctx.fill();
+                ctx.font = "30px American Typewriter"; 
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(chipsReservoir.rot, 635, 348.5);
+
+            }
+            if (chipsReservoir.schwarz > 0) {
+                ctx.beginPath();
+                ctx.arc(600, 392, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                ctx.font = "30px American Typewriter";
+        
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(chipsReservoir.schwarz, 635, 402.5);
+            }
+        }
+
+        //console.log(state.G.markt);
         //state.G["reihe1"]
         for (let j in state.G.markt.reihen) {
             const reihe = state.G.markt.reihen[j];
-            console.log(reihe, j);
+            //console.log(reihe, j);
             for (let i in state.G.markt.reihen[j]) {
                 const chipsReservoir = state.G.chipsReservoir
                 const karte = reihe[i];
-                console.log(karte);
-                console.log(chipsReservoir)
+                //console.log(karte);
+                //console.log(chipsReservoir)
                 KarteMalen(i, j, karte);
                 chipsVisualisieren(chipsReservoir)
 

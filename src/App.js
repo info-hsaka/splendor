@@ -47,6 +47,21 @@ class GameClient {
         ctx.fillRect(5, 345, 100, 150);
         ctx.strokeRect(5, 345, 100, 150);
 
+        function chipsVisualisieren(chipsReservoir) {
+            if (chipsReservoir.blau > 0) {
+                ctx.beginPath();
+                ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "blue";
+                ctx.fill();
+                ctx.font = "30px American Typewriter"; 
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(chipsReservoir.blau, 635, 186.5);
+
+            }
+        }
+
         function KarteMalen(i, j, karte) {
             if (karte.farbe == "schwarz") {
                 ctx.fillStyle = "rgb(46,41,65)";
@@ -189,49 +204,80 @@ class GameClient {
             const reihe = state.G.markt.reihen[j];
             console.log(reihe, j);
             for (let i in state.G.markt.reihen[j]) {
+                const chipsReservoir = state.G.markt.chipsReservoir
                 const karte = reihe[i];
                 console.log(karte);
                 KarteMalen(i, j, karte);
+                chipsVisualisieren(chipsReservoir)
+
             }
         }
 
         //chips
 
+
+
+
+
         ctx.beginPath();
         ctx.arc(600, 122.5, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
         ctx.fillStyle = "yellow";
-        ctx.fill();
+        ctx.fill()
+        ctx.font = "30px American Typewriter";
 
-        ctx.beginPath();
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(5, 635, 132.5);
+
+/*         ctx.beginPath();
         ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
         ctx.fillStyle = "blue";
         ctx.fill();
+        ctx.font = "30px American Typewriter"; */
+/* 
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(5, 635, 186.5); */
 
         ctx.beginPath();
         ctx.arc(600, 230, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
         ctx.fillStyle = "grey";
         ctx.fill();
+        ctx.font = "30px American Typewriter";
+
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(5, 635, 240.5);
 
         ctx.beginPath();
         ctx.arc(600, 284, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
         ctx.fillStyle = "green";
         ctx.fill();
+        ctx.font = "30px American Typewriter";
+
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(5, 635, 294.5);
 
         ctx.beginPath();
         ctx.arc(600, 338, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
         ctx.fillStyle = "red";
         ctx.fill();
+        ctx.font = "30px American Typewriter";
+
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(5, 635, 348.5);
 
         ctx.beginPath();
         ctx.arc(600, 392, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
         ctx.fillStyle = "black";
         ctx.fill();
+        ctx.font = "30px American Typewriter";
+
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(5, 635, 402.5);
     }
 }
 

@@ -109,12 +109,15 @@ const Seltenheit3Deck = [
         Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
     }, // keine echte Karte nur beispiel
 ];
-const chipsReservoir = 
-     {rot: 7, gruen: 7, blau: 7, weiss: 7, schwarz: 7, gelb: 5}
-    
 
-
-console.log(Seltenheit1Deck[0]);
+const chipsReservoir = {
+    rot: 7,
+    gruen: 7,
+    blau: 7,
+    weiss: 7,
+    schwarz: 7,
+    gelb: 5,
+};
 
 function SpielerSetup() {
     const SpielerHandStart = {
@@ -371,7 +374,6 @@ export const Game = {
                 i = i + 1;
             }
 
-            console.log(AnzahlHandKarten);
             if (
                 move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
                     AnzahlHandKarten.gruen &&

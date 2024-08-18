@@ -109,13 +109,14 @@ const Seltenheit3Deck = [
         Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
     }, // keine echte Karte nur beispiel
 ];
-const chipsReservoir = [
-    {
-        chipFarbe: { rot: 7, gruen: 7, blau: 7, weiss: 7, schwarz: 7, gelb: 5 },
-    },
-];
-
-console.log(Seltenheit1Deck[0]);
+const chipsReservoir = {
+    rot: 7,
+    gruen: 7,
+    blau: 7,
+    weiss: 7,
+    schwarz: 7,
+    gelb: 5,
+};
 
 function SpielerSetup() {
     const SpielerHandStart = {

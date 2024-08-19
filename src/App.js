@@ -87,7 +87,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 230, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "grey";
+                ctx.fillStyle = "rgb(248, 98, 236)";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -130,16 +130,17 @@ class GameClient {
         }
 
         function KarteMalen(i, j, karte) {
-            if (karte.farbe == "schwarz") {
-                ctx.fillStyle = "rgb(46,41,65)";
-            } else if (karte.farbe == "rot") {
-                ctx.fillStyle = "rgb(200,50,00";
-            } else if (karte.farbe == "gruen") {
-                ctx.fillStyle = "rgb(80,200,120)";
-            } else if (karte.farbe == "weiss") {
-                ctx.fillStyle = "rgb(248, 244, 236)";
-            } else if (karte.farbe == "blau") {
-                ctx.fillStyle = "rgb(0 ,150,200)";
+            if (karte.Farbe == "schwarz") {
+                //lila
+                ctx.fillStyle = "rgb(128,93,157)";
+            } else if (karte.Farbe == "rot") {
+                ctx.fillStyle = "rgb(25,83,95)"; // blau
+            } else if (karte.Farbe == "gruen") {
+                ctx.fillStyle = "rgb(22,152,115)";
+            } else if (karte.Farbe == "weiss") {
+                ctx.fillStyle = "rgb(161,61,99)";
+            } else if (karte.Farbe == "blau") {
+                ctx.fillStyle = "rgb(0,111,185)";
             }
 
             ctx.fillRect(125 + i * 110, 25 + j * 160, 100, 150);
@@ -156,7 +157,7 @@ class GameClient {
                 ctx.fillText(
                     "Reservieren",
                     125 + i * 110 + 102,
-                    25 + j * 160 + 20,
+                    25 + j * 160 + 20
                 );
                 ctx.strokeRect(125 + i * 110 + 100, 25 + j * 160 + 25, 100, 25);
                 ctx.fillStyle = "rgb(0,0,0)";
@@ -201,7 +202,7 @@ class GameClient {
                     10,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "rgb(0,0, 255)";
@@ -212,7 +213,7 @@ class GameClient {
                 ctx.strokeText(
                     karte.Preis.blau,
                     134 + i * 110,
-                    167.5 + j * 160,
+                    167.5 + j * 160
                 );
             }
             if (karte.Preis.weiss > 0) {
@@ -223,7 +224,7 @@ class GameClient {
                     10,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "rgb(255,255, 255)";
@@ -241,7 +242,7 @@ class GameClient {
                     10,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "rgb(0, 255, 0)";
@@ -252,7 +253,7 @@ class GameClient {
                 ctx.strokeText(
                     karte.Preis.gruen,
                     134 + i * 110,
-                    122.5 + j * 160,
+                    122.5 + j * 160
                 );
             }
             if (karte.Preis.rot > 0) {
@@ -263,7 +264,7 @@ class GameClient {
                     10,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "rgb(255, 0, 0)";
@@ -281,7 +282,7 @@ class GameClient {
                     10,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "rgb(0, 0, 0)";
@@ -301,7 +302,8 @@ class GameClient {
             for (let i in state.G.markt.reihen[j]) {
                 const chipsReservoir = state.G.chipsReservoir;
                 const karte = reihe[i];
-                //console.log(karte);
+                console.log(karte, reihe);
+
                 //console.log(chipsReservoir)
                 KarteMalen(i, j, karte);
                 chipsVisualisieren(chipsReservoir);
@@ -376,7 +378,7 @@ class GameClient {
         /*         ctx.beginPath()
         ctx.arc(1490, 191, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke()
-        ctx.fillStyle = "grey"
+        ctx.fillStyle = "rgb(248, 98, 236)"
         ctx.fill()
         ctx.font = "30px American Typewriter"
 
@@ -438,7 +440,7 @@ class GameClient {
         /*         ctx.beginPath()
         ctx.arc(1490, 621, 25, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke()
-        ctx.fillStyle = "grey"
+        ctx.fillStyle = "rgb(248, 98, 236)"
         ctx.fill()
         ctx.font = "30px American Typewriter"
 
@@ -484,7 +486,7 @@ class GameClient {
                     25,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "yellow";
@@ -495,7 +497,7 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.gelb,
                     1525,
-                    72.5 + idxSpieler * 430,
+                    72.5 + idxSpieler * 430
                 );
             }
 
@@ -507,7 +509,7 @@ class GameClient {
                     25,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "blue";
@@ -518,7 +520,7 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.blau,
                     1525,
-                    126.5 + idxSpieler * 430,
+                    126.5 + idxSpieler * 430
                 );
             }
 
@@ -526,7 +528,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(1490, 191 + idxSpieler * 430, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "grey";
+                ctx.fillStyle = "rgb(248, 98, 236)";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -534,7 +536,7 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.weiss,
                     1525,
-                    200.5 + idxSpieler * 430,
+                    200.5 + idxSpieler * 430
                 );
             }
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.gruen > 0) {
@@ -545,7 +547,7 @@ class GameClient {
                     25,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "green";
@@ -556,7 +558,7 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.gruen,
                     1525,
-                    255.5 + idxSpieler * 430,
+                    255.5 + idxSpieler * 430
                 );
             }
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.rot > 0) {
@@ -567,7 +569,7 @@ class GameClient {
                     25,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "red";
@@ -578,7 +580,7 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.rot,
                     1525,
-                    329.5 + idxSpieler * 430,
+                    329.5 + idxSpieler * 430
                 );
             }
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.schwarz > 0) {
@@ -589,7 +591,7 @@ class GameClient {
                     25,
                     0,
                     Math.PI * 2,
-                    true,
+                    true
                 ); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "black";
@@ -600,7 +602,7 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.schwarz,
                     1525,
-                    410.5 + idxSpieler * 430,
+                    410.5 + idxSpieler * 430
                 );
             }
         }
@@ -610,5 +612,5 @@ class GameClient {
 
 setupLobby(
     isMultiplayer,
-    (appElement, game) => new GameClient(appElement, game),
+    (appElement, game) => new GameClient(appElement, game)
 );

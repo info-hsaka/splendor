@@ -1,7 +1,7 @@
 import { Client } from "boardgame.io/client";
 import { Local, SocketIO } from "boardgame.io/multiplayer";
 import { resetOnClicks, onClick } from "./canvas";
-import { Game, karteReservieren, karteKaufen } from "./Game";
+import { Game } from "./Game";
 import { Debug } from "boardgame.io/debug";
 
 const isMultiplayer = import.meta.env.VITE_REMOTE === "true";
@@ -52,18 +52,16 @@ class GameClient {
         ctx.strokeRect(5, 345, 100, 150);
 
         function chipsVisualisieren(chipsReservoir) {
-
             if (chipsReservoir.blau > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "blue";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.blau, 635, 186.5);
-
             }
 
             if (chipsReservoir.gelb > 0) {
@@ -72,11 +70,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "yellow";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.gelb, 635, 132.5);
-
             }
 
             if (chipsReservoir.weiss > 0) {
@@ -85,11 +82,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "grey";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.weiss, 635, 240.5);
-
             }
             if (chipsReservoir.gruen > 0) {
                 ctx.beginPath();
@@ -97,11 +93,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "green";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.gruen, 635, 294.5);
-
             }
             if (chipsReservoir.rot > 0) {
                 ctx.beginPath();
@@ -109,11 +104,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "red";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.rot, 635, 348.5);
-
             }
             if (chipsReservoir.schwarz > 0) {
                 ctx.beginPath();
@@ -122,13 +116,11 @@ class GameClient {
                 ctx.fillStyle = "black";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
-        
+
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.schwarz, 635, 402.5);
             }
         }
-
-
 
         function KarteMalen(i, j, karte) {
             if (karte.farbe == "schwarz") {
@@ -173,7 +165,12 @@ class GameClient {
                     self.update(state);
                 }
             });
-
+            onClick(125 + i * 110 + 100, 25 + j * 160, 100, 25, () => {
+                self.client.moves.karteReservieren(j, i);
+            });
+            onClick(125 + i * 110 + 100, 25 + j * 160 + 25, 100, 25, () => {
+                self.client.moves.karteKaufen(j, i);
+            });
             siegpunkteZeichnen(i, j, karte);
             preisVisualisierung(i, j, karte);
         }
@@ -289,19 +286,19 @@ class GameClient {
             }
         }
 
-        function chipsSpielerhand() { // Koordinaten ändern
-            
+        function chipsSpielerhand() {
+            // Koordinaten ändern
+
             if (chipsReservoir.blau > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "blue";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.blau, 635, 186.5);
-
             }
 
             if (chipsReservoir.gelb > 0) {
@@ -310,11 +307,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "yellow";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.gelb, 635, 132.5);
-
             }
 
             if (chipsReservoir.weiss > 0) {
@@ -323,11 +319,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "grey";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.weiss, 635, 240.5);
-
             }
             if (chipsReservoir.gruen > 0) {
                 ctx.beginPath();
@@ -335,11 +330,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "green";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.gruen, 635, 294.5);
-
             }
             if (chipsReservoir.rot > 0) {
                 ctx.beginPath();
@@ -347,11 +341,10 @@ class GameClient {
                 ctx.stroke();
                 ctx.fillStyle = "red";
                 ctx.fill();
-                ctx.font = "30px American Typewriter"; 
+                ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.rot, 635, 348.5);
-
             }
             if (chipsReservoir.schwarz > 0) {
                 ctx.beginPath();
@@ -360,7 +353,7 @@ class GameClient {
                 ctx.fillStyle = "black";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
-        
+
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(chipsReservoir.schwarz, 635, 402.5);
             }
@@ -372,13 +365,12 @@ class GameClient {
             const reihe = state.G.markt.reihen[j];
             //console.log(reihe, j);
             for (let i in state.G.markt.reihen[j]) {
-                const chipsReservoir = state.G.chipsReservoir
+                const chipsReservoir = state.G.chipsReservoir;
                 const karte = reihe[i];
                 //console.log(karte);
                 //console.log(chipsReservoir)
                 KarteMalen(i, j, karte);
-                chipsVisualisieren(chipsReservoir)
-
+                chipsVisualisieren(chipsReservoir);
             }
         }
         //nobles
@@ -390,7 +382,6 @@ class GameClient {
         ctx.fillText(3, 670, 130);
         ctx.fillStyle = "rgb(50, 50, 50)";
         ctx.fillRect(668, 172.5, 15, 20);
-
 
         ctx.fillStyle = "rgb(200, 200, 200)";
         ctx.fillRect(666, 213, 90, 90);
@@ -405,7 +396,7 @@ class GameClient {
         ctx.font = "30px American Typewriter";
         ctx.fillStyle = "rgb(100, 100, 100)";
         ctx.fillText(3, 670, 346);
-        
+
         // Spielerhaende
 
         ctx.fillStyle = "rgb(225, 225, 225)";
@@ -423,10 +414,9 @@ class GameClient {
         ctx.fillStyle = "rgb(225, 225, 225)";
         ctx.fillRect(800, 1375, 750, 400);
         ctx.strokeRect(800, 1375, 750, 400);
-
     }
 }
 
 const appElement = document.getElementById("app");
 const app = new GameClient(appElement);
-800
+800;

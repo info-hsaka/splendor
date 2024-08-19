@@ -121,7 +121,7 @@ const chipsReservoir = {
 
 function SpielerSetup() {
     const SpielerHandStart = {
-        chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz: 0, gelb: 0 },
+        chips: { gruen: 3, rot: 3, blau: 3, weiss: 3, schwarz: 3, gelb: 0 },
 
         karten: [],
 
@@ -144,170 +144,7 @@ export const Game = {
         }
 
         const markt = {
-
-          
-            
-
             marktChips: chipsReservoir,
-
-            reiheNobles: [
-                {
-                    Siegpunkte: 3,
-                    Preis: { rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0 },
-                },
-                {
-                    Siegpunkte: 3,
-                    Preis: { rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0 },
-                },
-                {
-                    Siegpunkte: 3,
-                    Preis: { rot: 0, gruen: 4, blau: 4, weiss: 0, schwarz: 0 },
-                },
-            ],
-
-            reihen: [
-                //reihe1
-                [
-                    {
-                        farbe: "blau",
-                        Siegpunkte: 1,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 8,
-                            schwarz: 1,
-                        },
-                    }, //karten aus seltenheit 1 als beispiel
-                    {
-                        farbe: "schwarz",
-                        Siegpunkte: 1,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                    {
-                        farbe: "weiss",
-                        Siegpunkte: 0,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 7,
-                        },
-                    },
-                    {
-                        farbe: "rot",
-                        Siegpunkte: 0,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                ],
-                //reihe2
-                [
-                    {
-                        farbe: "blau",
-                        Siegpunkte: 1,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 0,
-                            weiss: 8,
-                            schwarz: 0,
-                        },
-                    }, //karten aus seltenheit 1 als beispiel
-                    {
-                        farbe: "gruen",
-                        Siegpunkte: 2,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                    {
-                        farbe: "schwarz",
-                        Siegpunkte: 2,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                    {
-                        farbe: "weiss",
-                        Siegpunkte: 2,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                ],
-                //reihe3
-                [
-                    {
-                        farbe: "rot",
-                        Siegpunkte: 2,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 4,
-                        },
-                    }, //karten aus seltenheit 1 als beispiel
-                    {
-                        farbe: "blau",
-                        Siegpunkte: 2,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                    {
-                        farbe: "schwarz",
-                        Siegpunkte: 2,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                    {
-                        farbe: "gruen",
-                        Siegpunkte: 2,
-                        Preis: {
-                            rot: 1,
-                            gruen: 3,
-                            blau: 2,
-                            weiss: 0,
-                            schwarz: 0,
-                        },
-                    },
-                ],
-            ],
         };
 
         const stapel1 = random.Shuffle(Seltenheit1Deck);
@@ -331,14 +168,10 @@ export const Game = {
             y++;
         }
         return {
-            reihe1: reihe1,
-            reihe2: reihe2,
-            reihe3: reihe3,
             reiheNobles: reiheNobles,
             markt: markt,
             einzelneSpielerHaende: einzelneSpielerHaende,
-            chipsReservoir : chipsReservoir,
-
+            chipsReservoir: chipsReservoir,
         };
     },
 
@@ -373,7 +206,7 @@ export const Game = {
                 }
                 i = i + 1;
             }
-
+            console.log(reiheID);
             if (
                 move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
                     AnzahlHandKarten.gruen &&
@@ -445,56 +278,59 @@ export const Game = {
                     );
                 }
 
-                Spielerhand.karten.push(move.G.reihen[reiheID][positionID]);
+                Spielerhand.karten.push(
+                    move.G.markt.reihen[reiheID][positionID]
+                );
 
                 if (
-                    move.G.reihen[reiheID][positionID].Preis.gruen -
+                    move.G.markt.reihen[reiheID][positionID].Preis.gruen -
                         AnzahlHandKarten.gruen >
                     0
                 ) {
                     Spielerhand.chips.gruen =
                         Spielerhand.chips.gruen -
-                        (move.G.reihen[reiheID][positionID].Preis.gruen -
+                        (move.G.markt.reihen[reiheID][positionID].Preis.gruen -
                             AnzahlHandKarten.gruen);
                 }
                 if (
-                    move.G.reihen[reiheID][positionID].Preis.rot -
+                    move.G.markt.reihen[reiheID][positionID].Preis.rot -
                         AnzahlHandKarten.rot >
                     0
                 ) {
                     Spielerhand.chips.rot =
                         Spielerhand.chips.rot -
-                        (move.G.reihen[reiheID][positionID].Preis.rot -
+                        (move.G.markt.reihen[reiheID][positionID].Preis.rot -
                             AnzahlHandKarten.rot);
                 }
                 if (
-                    move.G.reihen[reiheID][positionID].Preis.weiss -
+                    move.G.markt.reihen[reiheID][positionID].Preis.weiss -
                         AnzahlHandKarten.weiss >
                     0
                 ) {
                     Spielerhand.chips.weiss =
                         Spielerhand.chips.weiss -
-                        (move.G.reihen[reiheID][positionID].Preis.weiss -
+                        (move.G.markt.reihen[reiheID][positionID].Preis.weiss -
                             AnzahlHandKarten.weiss);
                 }
                 if (
-                    move.G.reihen[reiheID][positionID].Preis.schwarz -
+                    move.G.markt.reihen[reiheID][positionID].Preis.schwarz -
                         AnzahlHandKarten.schwarz >
                     0
                 ) {
                     Spielerhand.chips.schwarz =
                         Spielerhand.chips.schwarz -
-                        (move.G.reihen[reiheID][positionID].Preis.schwarz -
+                        (move.G.markt.reihen[reiheID][positionID].Preis
+                            .schwarz -
                             AnzahlHandKarten.schwarz);
                 }
                 if (
-                    move.G.reihen[reiheID][positionID].Preis.blau -
+                    move.G.markt.reihen[reiheID][positionID].Preis.blau -
                         AnzahlHandKarten.blau >
                     0
                 ) {
                     Spielerhand.chips.blau =
                         Spielerhand.chips.blau -
-                        (move.G.reihen[reiheID][positionID].Preis.blau -
+                        (move.G.markt.reihen[reiheID][positionID].Preis.blau -
                             AnzahlHandKarten.blau);
                 }
             } else {

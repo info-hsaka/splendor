@@ -482,7 +482,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(
                     1490,
-                    62.5 + idxSpieler * 430,
+                    62.5 + idxSpieler * 445,
                     25,
                     0,
                     Math.PI * 2,
@@ -497,7 +497,7 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.gelb,
                     1525,
-                    72.5 + idxSpieler * 430
+                    72.5 + idxSpieler * 440
                 );
             }
 
@@ -505,7 +505,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(
                     1490,
-                    126.5 + idxSpieler * 430,
+                    126.5 + idxSpieler * 440,
                     25,
                     0,
                     Math.PI * 2,
@@ -520,13 +520,13 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.blau,
                     1525,
-                    126.5 + idxSpieler * 430
+                    126.5 + idxSpieler * 440
                 );
             }
 
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.weiss > 0) {
                 ctx.beginPath();
-                ctx.arc(1490, 191 + idxSpieler * 430, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.arc(1490, 191 + idxSpieler * 440, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
                 ctx.fillStyle = "rgb(248, 98, 236)";
                 ctx.fill();
@@ -536,14 +536,14 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.weiss,
                     1525,
-                    200.5 + idxSpieler * 430
+                    200.5 + idxSpieler * 440
                 );
             }
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.gruen > 0) {
                 ctx.beginPath();
                 ctx.arc(
                     1490,
-                    250.5 + idxSpieler * 430,
+                    250.5 + idxSpieler * 440,
                     25,
                     0,
                     Math.PI * 2,
@@ -558,14 +558,14 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.gruen,
                     1525,
-                    255.5 + idxSpieler * 430
+                    255.5 + idxSpieler * 440
                 );
             }
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.rot > 0) {
                 ctx.beginPath();
                 ctx.arc(
                     1490,
-                    322.5 + idxSpieler * 430,
+                    322.5 + idxSpieler * 440,
                     25,
                     0,
                     Math.PI * 2,
@@ -580,14 +580,14 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.rot,
                     1525,
-                    329.5 + idxSpieler * 430
+                    329.5 + idxSpieler * 440
                 );
             }
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.schwarz > 0) {
                 ctx.beginPath();
                 ctx.arc(
                     1490,
-                    390.5 + idxSpieler * 430,
+                    390.5 + idxSpieler * 440,
                     25,
                     0,
                     Math.PI * 2,
@@ -602,11 +602,33 @@ class GameClient {
                 ctx.fillText(
                     state.G.einzelneSpielerHaende[idxSpieler].chips.schwarz,
                     1525,
-                    410.5 + idxSpieler * 430
+                    410.5 + idxSpieler * 440
                 );
             }
         }
-        SpielerChips(0, state);
+        // Test SpielerHandKarte
+
+        for (const idxSpieler of state.ctx.playOrder) {
+            SpielerChips(idxSpieler, state);
+            /*             for (const Karteidx of state.G.einzelneSpielerHaende[idxSpieler].karten) {  //Ausbaustufe 1
+                console.log(Karteidx)
+                if (Karteidx.Farbe == "blau") {
+                    let offset = 0
+                    KarteMalen(6.25, 0, Karteidx)
+                    offset = offset + 0.1
+                    ctx.fillStyle = "blue"
+                }
+                
+                if (Karteidx.Farbe == "weiss") {
+                    console.log (Karteidx.Farbe)
+                    let offset = 0
+                    KarteMalen(6.75, 0, Karteidx)
+                    offset = offset + 0.1
+                    ctx.fillStyle = "rgb(248, 98, 236)"
+                }
+               
+            }   */
+        }
     }
 }
 

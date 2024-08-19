@@ -3,8 +3,8 @@ import { Game } from "./Game";
 import serve from "koa-static";
 
 const server = Server({
-  games: [Game],
-  origins: [/.*/],
+    games: [Game],
+    origins: [/.*/],
 });
 
 server.app.use(serve("dist"));

@@ -1,3 +1,3 @@
 export const TicTacToe = {
-  // Tutorial things go here
+    // Tutorial things go here
 };

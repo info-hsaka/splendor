@@ -224,21 +224,21 @@ export const Game = {
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit1Deck.pop()
+                        Seltenheit1Deck.pop(),
                     );
                 } else if (reiheID == 1) {
                     move.G.markt.reihen[reiheID].splice(positionID, 1);
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit2Deck.pop()
+                        Seltenheit2Deck.pop(),
                     );
                 } else if (reiheID == 2) {
                     move.G.markt.reihen[reiheID].splice(positionID, 1);
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit3Deck.pop()
+                        Seltenheit3Deck.pop(),
                     );
                 }
 
@@ -260,26 +260,26 @@ export const Game = {
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit1Deck.pop()
+                        Seltenheit1Deck.pop(),
                     );
                 } else if (reiheID == 1) {
                     move.G.markt.reihen[reiheID].splice(positionID, 1);
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit2Deck.pop()
+                        Seltenheit2Deck.pop(),
                     );
                 } else if (reiheID == 2) {
                     move.G.markt.reihen[reiheID].splice(positionID, 1);
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit3Deck.pop()
+                        Seltenheit3Deck.pop(),
                     );
                 }
 
                 Spielerhand.karten.push(
-                    move.G.markt.reihen[reiheID][positionID]
+                    move.G.markt.reihen[reiheID][positionID],
                 );
 
                 if (
@@ -345,25 +345,25 @@ export const Game = {
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit1Deck.pop()
+                        Seltenheit1Deck.pop(),
                     );
                 } else if (reiheID == 1) {
                     move.G.markt.reihen[reiheID].splice(positionID, 1);
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit2Deck.pop()
+                        Seltenheit2Deck.pop(),
                     );
                 } else if (reiheID == 2) {
                     move.G.markt.reihen[reiheID].splice(positionID, 1);
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit3Deck.pop()
+                        Seltenheit3Deck.pop(),
                     );
                 }
                 Spielerhand.reservierteKarten.push(
-                    move.G.reihen[reiheID][positionID]
+                    move.G.reihen[reiheID][positionID],
                 );
                 if (move.G.markt.chipsReservoir.gelb > 0) {
                     Spielerhand.chips.gelb = Spielerhand.chips.gelb + 1;
@@ -372,7 +372,7 @@ export const Game = {
                 } else console.log("Keine gelben Chips mehr verfügbar!");
             } else
                 console.log(
-                    "Zeitgleich dürfen maximal drei Karten reserviert werden!"
+                    "Zeitgleich dürfen maximal drei Karten reserviert werden!",
                 ); /* 
                 reservierteKartenKaufen (move, reservierteKarteID) {
                   

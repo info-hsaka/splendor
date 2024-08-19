@@ -286,79 +286,6 @@ class GameClient {
             }
         }
 
-        function chipsSpielerhand() {
-            // Koordinaten ändern
-
-            if (chipsReservoir.blau > 0) {
-                ctx.beginPath();
-                ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
-                ctx.stroke();
-                ctx.fillStyle = "blue";
-                ctx.fill();
-                ctx.font = "30px American Typewriter";
-
-                ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.blau, 635, 186.5);
-            }
-
-            if (chipsReservoir.gelb > 0) {
-                ctx.beginPath();
-                ctx.arc(600, 122.5, 25, 0, Math.PI * 2, true); // Outer circle
-                ctx.stroke();
-                ctx.fillStyle = "yellow";
-                ctx.fill();
-                ctx.font = "30px American Typewriter";
-
-                ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.gelb, 635, 132.5);
-            }
-
-            if (chipsReservoir.weiss > 0) {
-                ctx.beginPath();
-                ctx.arc(600, 230, 25, 0, Math.PI * 2, true); // Outer circle
-                ctx.stroke();
-                ctx.fillStyle = "grey";
-                ctx.fill();
-                ctx.font = "30px American Typewriter";
-
-                ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.weiss, 635, 240.5);
-            }
-            if (chipsReservoir.gruen > 0) {
-                ctx.beginPath();
-                ctx.arc(600, 284, 25, 0, Math.PI * 2, true); // Outer circle
-                ctx.stroke();
-                ctx.fillStyle = "green";
-                ctx.fill();
-                ctx.font = "30px American Typewriter";
-
-                ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.gruen, 635, 294.5);
-            }
-            if (chipsReservoir.rot > 0) {
-                ctx.beginPath();
-                ctx.arc(600, 338, 25, 0, Math.PI * 2, true); // Outer circle
-                ctx.stroke();
-                ctx.fillStyle = "red";
-                ctx.fill();
-                ctx.font = "30px American Typewriter";
-
-                ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.rot, 635, 348.5);
-            }
-            if (chipsReservoir.schwarz > 0) {
-                ctx.beginPath();
-                ctx.arc(600, 392, 25, 0, Math.PI * 2, true); // Outer circle
-                ctx.stroke();
-                ctx.fillStyle = "black";
-                ctx.fill();
-                ctx.font = "30px American Typewriter";
-
-                ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.schwarz, 635, 402.5);
-            }
-        }
-
         //console.log(state.G.markt);
         //state.G["reihe1"]
         for (let j in state.G.markt.reihen) {
@@ -414,6 +341,263 @@ class GameClient {
         ctx.fillStyle = "rgb(225, 225, 225)";
         ctx.fillRect(800, 1375, 750, 400);
         ctx.strokeRect(800, 1375, 750, 400);
+
+        //chipsSpieler
+
+        //erste Hand
+
+        /*         ctx.beginPath()
+        ctx.arc(1490, 126.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "blue"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 136.5) */
+
+        /*         ctx.beginPath()
+        ctx.arc(1490, 62.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "yellow"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 72.5) */
+
+        /*         ctx.beginPath()
+        ctx.arc(1490, 191, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "grey"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 200.5) */
+
+        /*         ctx.beginPath()
+        ctx.arc(1490, 250.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "green"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 255.5)
+ */
+        /*         ctx.beginPath()
+        ctx.arc(1490, 322.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "red"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 329.5) */
+
+        /*         ctx.beginPath()
+        ctx.arc(1490, 390.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "black"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 410.5) */
+
+        //zweite Hand
+
+        /*         ctx.beginPath()
+        ctx.arc(1490, 556.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "blue"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 566.5) */
+
+        /*         ctx.beginPath()
+        ctx.arc(1490, 502.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "yellow"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 510)
+ */
+        /*         ctx.beginPath()
+        ctx.arc(1490, 621, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "grey"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 623.5)
+
+        ctx.beginPath()
+        ctx.arc(1490, 680.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "green"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 685.5)
+
+        ctx.beginPath()
+        ctx.arc(1490, 750.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "red"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 759.5)
+
+        ctx.beginPath()
+        ctx.arc(1490, 820.5, 25, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke()
+        ctx.fillStyle = "black"
+        ctx.fill()
+        ctx.font = "30px American Typewriter"
+
+        ctx.fillStyle = "rgb(0, 0, 0)"
+        ctx.fillText(4, 1525, 840.5)
+ */
+        function SpielerChips(idxSpieler, state) {
+            if (state.G.einzelneSpielerHaende[idxSpieler].chips.gelb > 0) {
+                ctx.beginPath();
+                ctx.arc(
+                    1490,
+                    62.5 + idxSpieler * 430,
+                    25,
+                    0,
+                    Math.PI * 2,
+                    true
+                ); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "yellow";
+                ctx.fill();
+                ctx.font = "30px American Typewriter";
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.gelb,
+                    1525,
+                    72.5 + idxSpieler * 430
+                );
+            }
+
+            if (state.G.einzelneSpielerHaende[idxSpieler].chips.blau > 0) {
+                ctx.beginPath();
+                ctx.arc(
+                    1490,
+                    126.5 + idxSpieler * 430,
+                    25,
+                    0,
+                    Math.PI * 2,
+                    true
+                ); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "blue";
+                ctx.fill();
+                ctx.font = "30px American Typewriter";
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.blau,
+                    1525,
+                    126.5 + idxSpieler * 430
+                );
+            }
+
+            if (state.G.einzelneSpielerHaende[idxSpieler].chips.weiss > 0) {
+                ctx.beginPath();
+                ctx.arc(1490, 191 + idxSpieler * 430, 25, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "grey";
+                ctx.fill();
+                ctx.font = "30px American Typewriter";
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.weiss,
+                    1525,
+                    200.5 + idxSpieler * 430
+                );
+            }
+            if (state.G.einzelneSpielerHaende[idxSpieler].chips.gruen > 0) {
+                ctx.beginPath();
+                ctx.arc(
+                    1490,
+                    250.5 + idxSpieler * 430,
+                    25,
+                    0,
+                    Math.PI * 2,
+                    true
+                ); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "green";
+                ctx.fill();
+                ctx.font = "30px American Typewriter";
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.gruen,
+                    1525,
+                    255.5 + idxSpieler * 430
+                );
+            }
+            if (state.G.einzelneSpielerHaende[idxSpieler].chips.rot > 0) {
+                ctx.beginPath();
+                ctx.arc(
+                    1490,
+                    322.5 + idxSpieler * 430,
+                    25,
+                    0,
+                    Math.PI * 2,
+                    true
+                ); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "red";
+                ctx.fill();
+                ctx.font = "30px American Typewriter";
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.rot,
+                    1525,
+                    329.5 + idxSpieler * 430
+                );
+            }
+            if (state.G.einzelneSpielerHaende[idxSpieler].chips.schwarz > 0) {
+                ctx.beginPath();
+                ctx.arc(
+                    1490,
+                    390.5 + idxSpieler * 430,
+                    25,
+                    0,
+                    Math.PI * 2,
+                    true
+                ); // Outer circle
+                ctx.stroke();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                ctx.font = "30px American Typewriter";
+
+                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillText(
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.schwarz,
+                    1525,
+                    410.5 + idxSpieler * 430
+                );
+            }
+        }
+        SpielerChips(0, state);
     }
 }
 

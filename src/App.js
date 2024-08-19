@@ -3,6 +3,7 @@ import { Local, SocketIO } from "boardgame.io/multiplayer";
 import { resetOnClicks, onClick } from "./canvas";
 import { Game } from "./Game";
 import { Debug } from "boardgame.io/debug";
+import { setupLobby } from "./lobby";
 
 const isMultiplayer = import.meta.env.VITE_REMOTE === "true";
 const multiplayerServer =
@@ -13,7 +14,7 @@ const multiplayer = isMultiplayer
     : Local();
 
 class GameClient {
-    constructor(rootElement) {
+    constructor(rootElement, gameParams) {
         this.rootElement = rootElement;
 
         this.client = Client({
@@ -24,9 +25,15 @@ class GameClient {
                 hideToggleButton: false,
                 impl: Debug,
             },
+            matchID: gameParams?.matchId,
+            playerID: gameParams?.playerId,
+            credentials: gameParams?.playerCredentials,
         });
 
-        this.client.subscribe((state) => this.update(state));
+        this.client.subscribe((state) => {
+            if (state === null) return;
+            this.update(state);
+        });
         this.client.start();
     }
 
@@ -601,6 +608,7 @@ class GameClient {
     }
 }
 
-const appElement = document.getElementById("app");
-const app = new GameClient(appElement);
-800;
+setupLobby(
+    isMultiplayer,
+    (appElement, game) => new GameClient(appElement, game),
+);

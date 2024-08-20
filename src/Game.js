@@ -141,7 +141,7 @@ const chipsReservoir = {
 
 function SpielerSetup() {
     const SpielerHandStart = {
-        chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz: 0, gelb: 0 }, // wieder auf null setzen
+        chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz:0, gelb: 0 }, // wieder auf null setzen
 
         karten: [    {
             Farbe: "blau",
@@ -152,7 +152,27 @@ function SpielerSetup() {
             Farbe: "weiss",
             Siegpunkte: 2,
             Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-        },],
+            },
+            {
+                Farbe: "blau",
+                Siegpunkte: 2,
+                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+            },
+            {
+                Farbe: "rot",
+                Siegpunkte: 2,
+                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+            },
+            {
+                Farbe: "rot",
+                Siegpunkte: 2,
+                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+            },
+            {
+                Farbe: "rot",
+                Siegpunkte: 2,
+                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+            },],
 
         Nobles: [],
 

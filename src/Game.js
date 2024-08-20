@@ -141,9 +141,9 @@ const chipsReservoir = {
 
 function SpielerSetup() {
     const SpielerHandStart = {
-        chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz:0, gelb: 0 }, // wieder auf null setzen
+        chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz: 0, gelb: 0 }, // wieder auf null setzen
 
-        karten: [    {
+        karten: [{
             Farbe: "blau",
             Siegpunkte: 2,
             Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
@@ -152,27 +152,30 @@ function SpielerSetup() {
             Farbe: "weiss",
             Siegpunkte: 2,
             Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "blau",
-                Siegpunkte: 2,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "rot",
-                Siegpunkte: 2,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "rot",
-                Siegpunkte: 2,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "rot",
-                Siegpunkte: 2,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+        },
+        {
+            Farbe: "blau",
+            Siegpunkte: 2,
+            Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+        },
+        {
+            Farbe: "rot",
+            Siegpunkte: 2,
+            Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+        },
+        {
+            Farbe: "rot",
+            Siegpunkte: 2,
+            Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+        },
+        {
+            Farbe: "rot",
+            Siegpunkte: 2,
+            Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
             },],
+        
+ 
+
 
         Nobles: [],
 
@@ -181,6 +184,16 @@ function SpielerSetup() {
     return SpielerHandStart;
 }
 
+function isVictory(einzelneSpielerHaende) {
+    let siegpunktSumme
+    for (const SiegpunktKarte of einzelneSpielerHaende.karten) {
+        
+        siegpunktSumme = siegpunktSumme+ karten [SiegpunktKarte].siegpunkte
+    }
+    console.log(siegpunktSumme)
+    
+}
+console.log(isVictory)
 let playerNames = [];
 
 /** @type {Game} */
@@ -224,7 +237,7 @@ export const Game = {
             chipsReservoir: chipsReservoir,
         };
     },
-
+  
     moves: {
         //move.G.reihen[reiheID][positionID]: objekt mit Karteninformation reihe1[1]
 
@@ -410,6 +423,8 @@ export const Game = {
         //   if (marktchips.colour >= 4) {
         //   }
         // },
+
+
     },
 
     seed: "random-seed",
@@ -429,5 +444,5 @@ export const Game = {
 
     disableUndo: true,
 
-    endIf: (endIf) => {},
+    endIf: (endIf) => { },
 };

@@ -63,7 +63,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "blue";
+                ctx.fillStyle = "rgb(0,111,185)";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -75,7 +75,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 122.5, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "yellow";
+                ctx.fillStyle = "rgb(240, 230, 140)";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -87,7 +87,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 230, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(248, 98, 236)";
+                ctx.fillStyle = "rgb(161,61,99)"; //rosa
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -98,7 +98,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 284, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "green";
+                ctx.fillStyle = "rgb(22,152,115)"; //türkis
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -109,7 +109,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 338, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "red";
+                ctx.fillStyle = "rgb(25,83,95)"; // blau
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -120,7 +120,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 392, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "black";
+                ctx.fillStyle = "rgb(128,93,157)"; //lila
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -136,10 +136,13 @@ class GameClient {
             } else if (karte.Farbe == "rot") {
                 ctx.fillStyle = "rgb(25,83,95)"; // blau
             } else if (karte.Farbe == "gruen") {
+                //türkis
                 ctx.fillStyle = "rgb(22,152,115)";
             } else if (karte.Farbe == "weiss") {
+                //rosa
                 ctx.fillStyle = "rgb(161,61,99)";
             } else if (karte.Farbe == "blau") {
+                //hässliches blau
                 ctx.fillStyle = "rgb(0,111,185)";
             }
 
@@ -168,17 +171,24 @@ class GameClient {
             onClick(125 + i * 110, 25 + j * 160, 100, 150, () => {
                 if (a == 0) {
                     resKaufFenster(i, j);
+                    onClick(
+                        125 + i * 110 + 100,
+                        25 + j * 160 + 25,
+                        100,
+                        25,
+                        () => {
+                            self.client.moves.karteKaufen(j, i);
+                        }
+                    );
+                    onClick(125 + i * 110 + 100, 25 + j * 160, 100, 25, () => {
+                        self.client.moves.karteReservieren(j, i);
+                    });
                     a = 1;
                 } else {
                     self.update(state);
                 }
             });
-            onClick(125 + i * 110 + 100, 25 + j * 160, 100, 25, () => {
-                self.client.moves.karteReservieren(j, i);
-            });
-            onClick(125 + i * 110 + 100, 25 + j * 160 + 25, 100, 25, () => {
-                self.client.moves.karteKaufen(j, i);
-            });
+
             siegpunkteZeichnen(i, j, karte);
             preisVisualisierung(i, j, karte);
         }
@@ -205,7 +215,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(0,0, 255)";
+                ctx.fillStyle = "rgb(0,111,185)";
                 ctx.fill();
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
@@ -227,7 +237,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(255,255, 255)";
+                ctx.fillStyle = "rgb(161,61,99)";
                 ctx.fill();
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
@@ -245,7 +255,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(0, 255, 0)";
+                ctx.fillStyle = "rgb(22,152,115)";
                 ctx.fill();
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
@@ -267,7 +277,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(255, 0, 0)";
+                ctx.fillStyle = "rgb(25,83,95)";
                 ctx.fill();
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
@@ -285,7 +295,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(0, 0, 0)";
+                ctx.fillStyle = "rgb(128,93,157)";
                 ctx.fill();
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
@@ -574,7 +584,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "red";
+                ctx.fillStyle = "rgb(25,83,95)";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 

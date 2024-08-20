@@ -101,6 +101,26 @@ const Seltenheit2Deck = [
         Siegpunkte: 1,
         Preis: { rot: 0, gruen: 0, blau: 3, weiss: 2, schwarz: 2 },
     },
+    {
+        Farbe: "weiss",
+        Siegpunkte: 2,
+        Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 2,
+        Preis: { rot: 3, gruen: 5, blau: 0, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "weiss",
+        Siegpunkte: 1,
+        Preis: { rot: 3, gruen: 0, blau: 3, weiss: 2, schwarz: 0 },
+    },
+    {
+        Farbe: "gruen",
+        Siegpunkte: 1,
+        Preis: { rot: 0, gruen: 0, blau: 3, weiss: 2, schwarz: 2 },
+    },
 ];
 const Seltenheit3Deck = [
     {
@@ -128,6 +148,31 @@ const Seltenheit3Deck = [
         Siegpunkte: 2,
         Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
     }, // keine echte Karte nur beispiel
+    {
+        Farbe: "blau",
+        Siegpunkte: 2,
+        Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+    }, // keine echte Karte nur beispiel
+    {
+        Farbe: "blau",
+        Siegpunkte: 2,
+        Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 2,
+        Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "gruen",
+        Siegpunkte: 2,
+        Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "rot",
+        Siegpunkte: 2,
+        Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+    },
 ];
 
 const chipsReservoir = {
@@ -141,18 +186,27 @@ const chipsReservoir = {
 
 function SpielerSetup() {
     const SpielerHandStart = {
-        chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz: 0, gelb: 0 }, // wieder auf null setzen
+        chips: {
+            gruen: 100,
+            rot: 100,
+            blau: 100,
+            weiss: 100,
+            schwarz: 100,
+            gelb: 0,
+        }, // wieder auf null setzen
 
-        karten: [    {
-            Farbe: "blau",
-            Siegpunkte: 2,
-            Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-        },
-        {
-            Farbe: "weiss",
-            Siegpunkte: 2,
-            Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-        },],
+        karten: [
+            {
+                Farbe: "blau",
+                Siegpunkte: 2,
+                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+            },
+            {
+                Farbe: "weiss",
+                Siegpunkte: 2,
+                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
+            },
+        ],
 
         Nobles: [],
 
@@ -210,7 +264,10 @@ export const Game = {
 
         karteKaufen(move, reiheID, positionID) {
             //reiheID : "1" positionID : "1"
-
+            console.log(
+                JSON.stringify(move.G.markt.stapel[reiheID]),
+                JSON.stringify(move.G.markt.reihen[reiheID])
+            );
             let i = 0;
             //gekaufte Karten die in der Spielerhand sind
             let AnzahlHandKarten = {
@@ -236,7 +293,7 @@ export const Game = {
                 }
                 i = i + 1;
             }
-            console.log(reiheID);
+
             if (
                 move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
                     AnzahlHandKarten.gruen &&
@@ -249,15 +306,18 @@ export const Game = {
                 move.G.markt.reihen[reiheID][positionID].Preis.weiss <=
                     AnzahlHandKarten.weiss
             ) {
-                Spielerhand.karten.push(move.G.reihen[reiheID][positionID]);
-                console.log(Spielerhand);
+                Spielerhand.karten.push(
+                    move.G.markt.reihen[reiheID][positionID]
+                );
 
                 move.G.markt.reihen[reiheID].splice(positionID, 1);
-                move.G.markt.reihen[reiheID].splice(
-                    positionID,
-                    0,
-                    move.G.markt.stapel[reiheID].pop()
-                );
+                if (move.G.markt.stapel[reiheID].length > 0) {
+                    move.G.markt.reihen[reiheID].splice(
+                        positionID,
+                        0,
+                        move.G.markt.stapel[reiheID].pop()
+                    );
+                }
             } else if (
                 move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
                     AnzahlHandKarten.gruen + Spielerhand.chips.gruen &&
@@ -270,17 +330,6 @@ export const Game = {
                 move.G.markt.reihen[reiheID][positionID].Preis.blau <=
                     AnzahlHandKarten.blau + Spielerhand.chips.blau
             ) {
-                Spielerhand.karten.push(
-                    move.G.markt.reihen[reiheID][positionID]
-                );
-
-                move.G.markt.reihen[reiheID].splice(positionID, 1);
-                move.G.markt.reihen[reiheID].splice(
-                    positionID,
-                    0,
-                    move.G.markt.stapel[reiheID].pop()
-                );
-
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.gruen -
                         AnzahlHandKarten.gruen >
@@ -290,6 +339,7 @@ export const Game = {
                         Spielerhand.chips.gruen -
                         (move.G.markt.reihen[reiheID][positionID].Preis.gruen -
                             AnzahlHandKarten.gruen);
+                    //chips auf dem markt werden mehr
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.rot -
@@ -331,6 +381,17 @@ export const Game = {
                         Spielerhand.chips.blau -
                         (move.G.markt.reihen[reiheID][positionID].Preis.blau -
                             AnzahlHandKarten.blau);
+                }
+                Spielerhand.karten.push(
+                    move.G.markt.reihen[reiheID][positionID]
+                );
+                move.G.markt.reihen[reiheID].splice(positionID, 1);
+                if (move.G.markt.stapel[reiheID].length > 0) {
+                    move.G.markt.reihen[reiheID].splice(
+                        positionID,
+                        0,
+                        move.G.markt.stapel[reiheID].pop()
+                    );
                 }
             } else {
                 console.log("Nicht genug Ressourcen!");

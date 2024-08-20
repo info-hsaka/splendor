@@ -487,6 +487,8 @@ class GameClient {
         ctx.fillStyle = "rgb(0, 0, 0)"
         ctx.fillText(4, 1525, 840.5)
  */
+        
+        console.log(state.G)
         function SpielerChips(idxSpieler, state) {
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.gelb > 0) {
                 ctx.beginPath();
@@ -619,26 +621,91 @@ class GameClient {
         // Test SpielerHandKarte
 
         for (const idxSpieler of state.ctx.playOrder) {
+            console.log(idxSpieler)
             SpielerChips(idxSpieler, state);
-            /*             for (const Karteidx of state.G.einzelneSpielerHaende[idxSpieler].karten) {  //Ausbaustufe 1
-                console.log(Karteidx)
-                if (Karteidx.Farbe == "blau") {
-                    let offset = 0
-                    KarteMalen(6.25, 0, Karteidx)
-                    offset = offset + 0.1
-                    ctx.fillStyle = "blue"
-                }
-                
-                if (Karteidx.Farbe == "weiss") {
-                    console.log (Karteidx.Farbe)
-                    let offset = 0
-                    KarteMalen(6.75, 0, Karteidx)
-                    offset = offset + 0.1
-                    ctx.fillStyle = "rgb(248, 98, 236)"
-                }
-               
-            }   */
+
         }
+
+        let blau = 0
+        let weiss = 0
+        let gruen = 0
+        let rot = 0
+        let schwarz = 0
+
+        for (const kartenCounter of state.G.einzelneSpielerHaende[state.ctx.currentPlayer].karten) {
+            //console.log(state.G)
+            if (kartenCounter.Farbe == "blau") {
+               blau ++ 
+            }
+            if (kartenCounter.Farbe == "weiss") {
+                weiss ++ 
+            }
+            if (kartenCounter.Farbe == "gruen") {
+                gruen ++ 
+            }
+            if (kartenCounter.Farbe == "rot") {
+                rot ++ 
+            }
+
+            if (kartenCounter.Farbe == "schwarz") {
+                schwarz ++ 
+            }
+
+        }
+/*         console.log(blau, weiss, rot)
+        ctx.font = "30px American Typewriter";
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText(
+            "blau:", 810, 60)
+        ctx.fillText(blau, 875, 60)
+ */
+/*         ctx.fillText(
+            "weiss:", 810, 90)
+        ctx.fillText(weiss, 885, 90)
+
+        ctx.fillText(
+            "gruen:", 810, 120)
+        ctx.fillText(weiss, 885, 120)
+
+        ctx.fillText(
+            "rot:", 810, 150)
+        ctx.fillText(weiss, 885, 150)
+
+        ctx.fillText(
+            "schwarz:", 810, 180)
+        ctx.fillText(weiss, 925, 180)
+
+        ctx.fillText(
+            "blau:", 810, 500)
+        ctx.fillText(blau, 875, 60) */
+
+        for (const spielerAktiv of state.ctx.playOrder) {
+            console.log(blau, weiss, rot)
+            ctx.font = "30px American Typewriter";
+            ctx.fillStyle = "rgb(0, 0, 0)";
+            ctx.fillText(
+                "blau:", 810, 60+ spielerAktiv * 440)
+            ctx.fillText(blau, 875, 60 + spielerAktiv * 440)     
+            
+            ctx.fillText(
+                "weiss:", 810, 90+ spielerAktiv * 440)
+            ctx.fillText(weiss, 885, 90+ spielerAktiv * 440)
+    
+            ctx.fillText(
+                "gruen:", 810, 120+ spielerAktiv * 440)
+            ctx.fillText(gruen, 885, 120+ spielerAktiv * 440)
+    
+            ctx.fillText(
+                "rot:", 810, 150+ spielerAktiv * 440)
+            ctx.fillText(rot, 885, 150+ spielerAktiv * 440)
+    
+            ctx.fillText(
+                "schwarz:", 810, 180+ spielerAktiv * 440)
+            ctx.fillText(schwarz, 925, 180+ spielerAktiv * 440)
+    
+
+        }
+
     }
 }
 
@@ -646,3 +713,24 @@ setupLobby(
     isMultiplayer,
     (appElement, game) => new GameClient(appElement, game)
 );
+
+
+
+/*             for (const Karteidx of state.G.einzelneSpielerHaende[idxSpieler].karten) {  //Ausbaustufe 1
+console.log(Karteidx)
+if (Karteidx.Farbe == "blau") {
+    let offset = 0
+    KarteMalen(6.25, 0, Karteidx)
+    offset = offset + 0.1
+    ctx.fillStyle = "blue"
+}
+
+if (Karteidx.Farbe == "weiss") {
+    console.log (Karteidx.Farbe)
+    let offset = 0
+    KarteMalen(6.75, 0, Karteidx)
+    offset = offset + 0.1
+    ctx.fillStyle = "rgb(248, 98, 236)"
+}
+
+}   */

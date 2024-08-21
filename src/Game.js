@@ -230,14 +230,15 @@ function SpielerSetup() {
     return SpielerHandStart;
 }
 
-function isVictory(einzelneSpielerHaende) {
-    let siegpunktSumme;
+/* function isVictory(einzelneSpielerHaende) {
+    let siegpunktSumme = 0
     for (const SiegpunktKarte of einzelneSpielerHaende.karten) {
         siegpunktSumme = siegpunktSumme + karten[SiegpunktKarte].siegpunkte;
     }
-    console.log(siegpunktSumme);
-}
-console.log(isVictory);
+
+    return siegpunktSumme
+} */
+
 let playerNames = [];
 
 /** @type {Game} */
@@ -520,5 +521,29 @@ export const Game = {
 
     disableUndo: true,
 
-    endIf: (endIf) => {},
+    endIf: (state) => {
+        for (const spielerPlayOrder of state.ctx.playOrder) {
+            let siegpunktSumme = 0;
+            for (const SiegpunktKarte of state.G.einzelneSpielerHaende[
+                spielerPlayOrder
+            ].karten) {
+                console.log(
+                    spielerPlayOrder,
+                    SiegpunktKarte,
+                    state.G.einzelneSpielerHaende
+                );
+                siegpunktSumme = siegpunktSumme + SiegpunktKarte.Siegpunkte;
+                console.log(siegpunktSumme);
+            }
+            if (siegpunktSumme == 15) {
+                console.log("DER SIEGER IST:", currentPlayer);
+            }
+        }
+
+        /*         for (const SiegpunktKarte of state.G.einzelneSpielerHaende[spielerPlayOrder].karten) {
+        
+            siegpunktSumme = siegpunktSumme + karten[SiegpunktKarte].siegpunkte
+        
+        } */
+    },
 };

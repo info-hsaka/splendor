@@ -127,10 +127,10 @@ class GameClient {
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(marktChips.schwarz, 635, 402.5);
             }
-            onClick(600, 392, 25, 0, Math.PI * 2, () => {
-                //Wie Kreis in OnClick?
-                self.client.moves.chipsZiehen("schwarz");
-            });
+            /*  onClick(600, 392, 25, 0, Math.PI * 2, () => {
+                //Wie Kreis in OnClick? 
+                self.client.moves.chipsZiehen("schwarz");});
+           */
         }
 
         function KarteMalen(i, j, karte) {

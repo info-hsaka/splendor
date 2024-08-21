@@ -186,14 +186,16 @@ const chipsReservoir = {
 
 function SpielerSetup() {
     const SpielerHandStart = {
-        chips: { gruen: 0, rot: 0, blau: 0, weiss: 0, schwarz: 0, gelb: 0 }, // wieder auf null setzen
+        chips: {
+            gruen: 100,
+            rot: 100,
+            blau: 100,
+            weiss: 100,
+            schwarz: 100,
+            gelb: 10,
+        }, // wieder auf null setzen
 
         karten: [
-            {
-                Farbe: "blau",
-                Siegpunkte: 2,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
             {
                 Farbe: "weiss",
                 Siegpunkte: 2,
@@ -256,7 +258,14 @@ export const Game = {
             i++;
         }
         const markt = {
-            marktChips: chipsReservoir,
+            marktChips: {
+                rot: 7,
+                gruen: 7,
+                blau: 2,
+                weiss: 7,
+                schwarz: 7,
+                gelb: 5,
+            },
             reihen: [reihe1, reihe2, reihe3],
             stapel: [stapel1, stapel2, stapel3],
         };
@@ -273,10 +282,9 @@ export const Game = {
     },
 
     moves: {
-        //move.G.reihen[reiheID][positionID]: objekt mit Karteninformation reihe1[1]
+        //Funktion initiiert, dass eine Karte gekauft wird.
 
         karteKaufen(move, reiheID, positionID) {
-            //reiheID : "1" positionID : "1"
             console.log(
                 JSON.stringify(move.G.markt.stapel[reiheID]),
                 JSON.stringify(move.G.markt.reihen[reiheID])
@@ -291,6 +299,7 @@ export const Game = {
                 schwarz: 0,
             };
             const Spielerhand = move.G.einzelneSpielerHaende[move.playerID];
+            console.log(Spielerhand, move.playerID);
 
             while (i < Spielerhand.karten.length) {
                 if (Spielerhand.karten[i].Farbe == "blau") {
@@ -352,6 +361,10 @@ export const Game = {
                         Spielerhand.chips.gruen -
                         (move.G.markt.reihen[reiheID][positionID].Preis.gruen -
                             AnzahlHandKarten.gruen);
+                    move.G.markt.marktChips.gruen =
+                        move.G.markt.marktChips.gruen +
+                        move.G.markt.reihen[reiheID][positionID].Preis.gruen -
+                        AnzahlHandKarten.gruen;
                     //chips auf dem markt werden mehr
                 }
                 if (
@@ -363,6 +376,10 @@ export const Game = {
                         Spielerhand.chips.rot -
                         (move.G.markt.reihen[reiheID][positionID].Preis.rot -
                             AnzahlHandKarten.rot);
+                    move.G.markt.marktChips.rot =
+                        move.G.markt.marktChips.rot +
+                        move.G.markt.reihen[reiheID][positionID].Preis.rot -
+                        AnzahlHandKarten.rot;
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.weiss -
@@ -373,6 +390,10 @@ export const Game = {
                         Spielerhand.chips.weiss -
                         (move.G.markt.reihen[reiheID][positionID].Preis.weiss -
                             AnzahlHandKarten.weiss);
+                    move.G.markt.marktChips.weiss =
+                        move.G.markt.marktChips.weiss +
+                        move.G.markt.reihen[reiheID][positionID].Preis.weiss -
+                        AnzahlHandKarten.weiss;
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.schwarz -
@@ -384,6 +405,10 @@ export const Game = {
                         (move.G.markt.reihen[reiheID][positionID].Preis
                             .schwarz -
                             AnzahlHandKarten.schwarz);
+                    move.G.markt.marktChips.schwarz =
+                        move.G.markt.marktChips.schwarz +
+                        move.G.markt.reihen[reiheID][positionID].Preis.schwarz -
+                        AnzahlHandKarten.schwarz;
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.blau -
@@ -394,6 +419,10 @@ export const Game = {
                         Spielerhand.chips.blau -
                         (move.G.markt.reihen[reiheID][positionID].Preis.blau -
                             AnzahlHandKarten.blau);
+                    move.G.markt.marktChips.blau =
+                        move.G.markt.marktChips.blau +
+                        move.G.markt.reihen[reiheID][positionID].Preis.blau -
+                        AnzahlHandKarten.blau;
                 }
                 Spielerhand.karten.push(
                     move.G.markt.reihen[reiheID][positionID]

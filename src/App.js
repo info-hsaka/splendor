@@ -58,8 +58,8 @@ class GameClient {
         ctx.fillRect(5, 345, 100, 150);
         ctx.strokeRect(5, 345, 100, 150);
 
-        function chipsVisualisieren(chipsReservoir) {
-            if (chipsReservoir.blau > 0) {
+        function chipsVisualisieren(marktChips) {
+            if (marktChips.blau > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
@@ -68,10 +68,10 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.blau, 635, 186.5);
+                ctx.fillText(marktChips.blau, 635, 186.5); // anzahl chips
             }
 
-            if (chipsReservoir.gelb > 0) {
+            if (marktChips.gelb > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 122.5, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
@@ -80,10 +80,10 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.gelb, 635, 132.5);
+                ctx.fillText(marktChips.gelb, 635, 132.5);
             }
 
-            if (chipsReservoir.weiss > 0) {
+            if (marktChips.weiss > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 230, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
@@ -92,9 +92,9 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.weiss, 635, 240.5);
+                ctx.fillText(marktChips.weiss, 635, 240.5);
             }
-            if (chipsReservoir.gruen > 0) {
+            if (marktChips.gruen > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 284, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
@@ -103,9 +103,9 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.gruen, 635, 294.5);
+                ctx.fillText(marktChips.gruen, 635, 294.5);
             }
-            if (chipsReservoir.rot > 0) {
+            if (marktChips.rot > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 338, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
@@ -114,9 +114,9 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.rot, 635, 348.5);
+                ctx.fillText(marktChips.rot, 635, 348.5);
             }
-            if (chipsReservoir.schwarz > 0) {
+            if (marktChips.schwarz > 0) {
                 ctx.beginPath();
                 ctx.arc(600, 392, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
@@ -125,7 +125,7 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
-                ctx.fillText(chipsReservoir.schwarz, 635, 402.5);
+                ctx.fillText(marktChips.schwarz, 635, 402.5);
             }
         }
 
@@ -310,7 +310,7 @@ class GameClient {
             const reihe = state.G.markt.reihen[j];
             //console.log(reihe, j);
             for (let i in state.G.markt.reihen[j]) {
-                const chipsReservoir = state.G.chipsReservoir;
+                const chipsReservoir = state.G.markt.marktChips;
                 const karte = reihe[i];
                 console.log(karte, reihe);
 
@@ -487,8 +487,8 @@ class GameClient {
         ctx.fillStyle = "rgb(0, 0, 0)"
         ctx.fillText(4, 1525, 840.5)
  */
-        
-        console.log(state.G)
+
+        console.log(state.G);
         function SpielerChips(idxSpieler, state) {
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.gelb > 0) {
                 ctx.beginPath();
@@ -546,7 +546,7 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(
-                    state.G.einzelneSpielerHaende[idxSpieler].chips.weiss,
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.weiss, //anzahl handkarten
                     1525,
                     200.5 + idxSpieler * 440
                 );
@@ -621,45 +621,45 @@ class GameClient {
         // Test SpielerHandKarte
 
         for (const idxSpieler of state.ctx.playOrder) {
-            console.log(idxSpieler)
+            console.log(idxSpieler);
             SpielerChips(idxSpieler, state);
-
         }
 
-        let blau = 0
-        let weiss = 0
-        let gruen = 0
-        let rot = 0
-        let schwarz = 0
+        let blau = 0;
+        let weiss = 0;
+        let gruen = 0;
+        let rot = 0;
+        let schwarz = 0;
 
-        for (const kartenCounter of state.G.einzelneSpielerHaende[state.ctx.currentPlayer].karten) {
+        for (const kartenCounter of state.G.einzelneSpielerHaende[
+            state.ctx.currentPlayer
+        ].karten) {
             //console.log(state.G)
             if (kartenCounter.Farbe == "blau") {
-               blau ++ 
+                blau++;
             }
             if (kartenCounter.Farbe == "weiss") {
-                weiss ++ 
+                weiss++;
             }
             if (kartenCounter.Farbe == "gruen") {
-                gruen ++ 
+                gruen++;
             }
             if (kartenCounter.Farbe == "rot") {
-                rot ++ 
+                rot++;
             }
 
             if (kartenCounter.Farbe == "schwarz") {
-                schwarz ++ 
+                schwarz++;
             }
-
         }
-/*         console.log(blau, weiss, rot)
+        /*         console.log(blau, weiss, rot)
         ctx.font = "30px American Typewriter";
         ctx.fillStyle = "rgb(0, 0, 0)";
         ctx.fillText(
             "blau:", 810, 60)
         ctx.fillText(blau, 875, 60)
  */
-/*         ctx.fillText(
+        /*         ctx.fillText(
             "weiss:", 810, 90)
         ctx.fillText(weiss, 885, 90)
 
@@ -680,32 +680,24 @@ class GameClient {
         ctx.fillText(blau, 875, 60) */
 
         for (const spielerAktiv of state.ctx.playOrder) {
-            console.log(blau, weiss, rot)
+            console.log(blau, weiss, rot);
             ctx.font = "30px American Typewriter";
             ctx.fillStyle = "rgb(0, 0, 0)";
-            ctx.fillText(
-                "blau:", 810, 60+ spielerAktiv * 440)
-            ctx.fillText(blau, 875, 60 + spielerAktiv * 440)     
-            
-            ctx.fillText(
-                "weiss:", 810, 90+ spielerAktiv * 440)
-            ctx.fillText(weiss, 885, 90+ spielerAktiv * 440)
-    
-            ctx.fillText(
-                "gruen:", 810, 120+ spielerAktiv * 440)
-            ctx.fillText(gruen, 885, 120+ spielerAktiv * 440)
-    
-            ctx.fillText(
-                "rot:", 810, 150+ spielerAktiv * 440)
-            ctx.fillText(rot, 885, 150+ spielerAktiv * 440)
-    
-            ctx.fillText(
-                "schwarz:", 810, 180+ spielerAktiv * 440)
-            ctx.fillText(schwarz, 925, 180+ spielerAktiv * 440)
-    
+            ctx.fillText("blau:", 810, 60 + spielerAktiv * 440);
+            ctx.fillText(blau, 875, 60 + spielerAktiv * 440);
 
+            ctx.fillText("weiss:", 810, 90 + spielerAktiv * 440);
+            ctx.fillText(weiss, 885, 90 + spielerAktiv * 440);
+
+            ctx.fillText("gruen:", 810, 120 + spielerAktiv * 440);
+            ctx.fillText(gruen, 885, 120 + spielerAktiv * 440);
+
+            ctx.fillText("rot:", 810, 150 + spielerAktiv * 440);
+            ctx.fillText(rot, 885, 150 + spielerAktiv * 440);
+
+            ctx.fillText("schwarz:", 810, 180 + spielerAktiv * 440);
+            ctx.fillText(schwarz, 925, 180 + spielerAktiv * 440);
         }
-
     }
 }
 
@@ -713,8 +705,6 @@ setupLobby(
     isMultiplayer,
     (appElement, game) => new GameClient(appElement, game)
 );
-
-
 
 /*             for (const Karteidx of state.G.einzelneSpielerHaende[idxSpieler].karten) {  //Ausbaustufe 1
 console.log(Karteidx)

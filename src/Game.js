@@ -195,33 +195,7 @@ function SpielerSetup() {
             gelb: 10,
         }, // wieder auf null setzen
 
-        karten: [
-            {
-                Farbe: "weiss",
-                Siegpunkte: 3,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "blau",
-                Siegpunkte: 2,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "rot",
-                Siegpunkte: 1,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "rot",
-                Siegpunkte: 4,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-            {
-                Farbe: "rot",
-                Siegpunkte: 2,
-                Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
-            },
-        ],
+        karten: [],
 
         Nobles: [],
 

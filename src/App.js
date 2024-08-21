@@ -700,13 +700,14 @@ class GameClient {
             ctx.fillText(schwarz, 925, 180 + idxSpieler * 440);
         }
 
-        ctx.fillStyle = "rgb(250, 250, 250)";
-        ctx.fillRect(810, 380, 40, 30);
+
         for (const spielerPlayOrder of state.ctx.playOrder) {
-            ctx.strokeText(siegpunktAnzahl(state, spielerPlayOrder), 810, 405) 
+            ctx.fillStyle = "rgb(250, 250, 250)";
+            ctx.fillRect(810, 380 + 450 * spielerPlayOrder, 40, 30);
+            ctx.strokeText(siegpunktAnzahl(state, spielerPlayOrder), 810, 405 + 450 * spielerPlayOrder) 
         }
         if (state.ctx.gameover != undefined) {
-            ctx.fillStyle = "grey "
+            ctx.fillStyle = "pink"
             ctx.fillRect(50, 100, 1000, 400)
             ctx.font = "75px American Typewriter";
 

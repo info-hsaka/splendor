@@ -292,7 +292,26 @@ export const Game = {
 
     moves: {
         //Funktion initiiert, dass eine Karte gekauft wird.
-
+        chipsZiehen(move, farbe) {
+            const Spielerhand =
+                move.G.einzelneSpielerHaende[move.ctx.currentPlayer];
+            if (farbe == gruen) {
+                Spielerhand.chips.gruen = Spielerhand.chips.gruen +1
+                move.G.markt.marktChips.gruen =move.G.markt.marktChips.gruen -1
+            } else     if (farbe == rot) {
+                Spielerhand.chips.rot = Spielerhand.chips.rot +1
+                move.G.markt.marktChips.rot =move.G.markt.marktChips.rot -1
+            }else    if (farbe == weiss) {
+                Spielerhand.chips.weiss = Spielerhand.chips.weiss +1
+                move.G.markt.marktChips.weiss =move.G.markt.marktChips.weiss -1
+            }else    if (farbe == schwarz) {
+                Spielerhand.chips.schwarz = Spielerhand.chips.schwarz +1
+                move.G.markt.marktChips.schwarz =move.G.markt.marktChips.schwarz -1
+            } else    if (farbe == blau) {
+                Spielerhand.chips.blau = Spielerhand.chips.blau +1
+                move.G.markt.marktChips.blau =move.G.markt.marktChips.blau -1
+            }
+        }
         karteKaufen(move, reiheID, positionID) {
             console.log(
                 JSON.stringify(move.G.markt.stapel[reiheID]),

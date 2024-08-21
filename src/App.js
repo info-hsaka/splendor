@@ -120,13 +120,17 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 392, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(128,93,157)"; //lila
+                ctx.fillStyle = "rgb(128,93,157)"; //lila schwarz
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(marktChips.schwarz, 635, 402.5);
             }
+            onClick(600, 392, 25, 0, Math.PI * 2, () => {
+                //Wie Kreis in OnClick?
+                self.client.moves.chipsZiehen("schwarz");
+            });
         }
 
         function KarteMalen(i, j, karte) {
@@ -489,7 +493,6 @@ class GameClient {
 
         console.log(state.G);
         function SpielerChips(idxSpieler, state) {
-
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.gelb > 0) {
                 ctx.beginPath();
                 ctx.arc(
@@ -703,19 +706,18 @@ class GameClient {
         ctx.fillStyle = "rgb(250, 250, 250)";
         ctx.fillRect(810, 380, 40, 30);
         for (const spielerPlayOrder of state.ctx.playOrder) {
-            ctx.strokeText(siegpunktAnzahl(state, spielerPlayOrder), 810, 405) 
+            ctx.strokeText(siegpunktAnzahl(state, spielerPlayOrder), 810, 405);
         }
         if (state.ctx.gameover != undefined) {
-            ctx.fillStyle = "grey "
-            ctx.fillRect(50, 100, 1000, 400)
+            ctx.fillStyle = "grey ";
+            ctx.fillRect(50, 100, 1000, 400);
             ctx.font = "75px American Typewriter";
 
             ctx.fillStyle = "rgb(0, 0, 0)";
-            ctx.fillText("Player", 240, 325)
-            ctx.fillText(state.ctx.currentPlayer, 455, 325)
-            ctx.fillText("wins", 505, 325)
+            ctx.fillText("Player", 240, 325);
+            ctx.fillText(state.ctx.currentPlayer, 455, 325);
+            ctx.fillText("wins", 505, 325);
         }
-
     }
 }
 

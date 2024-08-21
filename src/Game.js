@@ -230,6 +230,14 @@ function SpielerSetup() {
     return SpielerHandStart;
 }
 
+function isVictory(einzelneSpielerHaende) {
+    let siegpunktSumme;
+    for (const SiegpunktKarte of einzelneSpielerHaende.karten) {
+        siegpunktSumme = siegpunktSumme + karten[SiegpunktKarte].siegpunkte;
+    }
+    console.log(siegpunktSumme);
+}
+console.log(isVictory);
 let playerNames = [];
 
 /** @type {Game} */

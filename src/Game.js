@@ -230,16 +230,20 @@ function SpielerSetup() {
     return SpielerHandStart;
 }
 
-function isVictory(einzelneSpielerHaende) {
-    let siegpunktSumme
+
+
+
+
+/* function isVictory(einzelneSpielerHaende) {
+    let siegpunktSumme = 0
     for (const SiegpunktKarte of einzelneSpielerHaende.karten) {
         
         siegpunktSumme = siegpunktSumme+ karten [SiegpunktKarte].siegpunkte
     }
-    console.log(siegpunktSumme)
-    
-}
-console.log(isVictory)
+
+    return siegpunktSumme
+} */
+
 let playerNames = [];
 
 /** @type {Game} */
@@ -321,15 +325,15 @@ export const Game = {
 
             if (
                 move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
-                    AnzahlHandKarten.gruen &&
+                AnzahlHandKarten.gruen &&
                 move.G.markt.reihen[reiheID][positionID].Preis.rot <=
-                    AnzahlHandKarten.rot &&
+                AnzahlHandKarten.rot &&
                 move.G.markt.reihen[reiheID][positionID].Preis.blau <=
-                    AnzahlHandKarten.blau &&
+                AnzahlHandKarten.blau &&
                 move.G.markt.reihen[reiheID][positionID].Preis.schwarz <=
-                    AnzahlHandKarten.schwarz &&
+                AnzahlHandKarten.schwarz &&
                 move.G.markt.reihen[reiheID][positionID].Preis.weiss <=
-                    AnzahlHandKarten.weiss
+                AnzahlHandKarten.weiss
             ) {
                 Spielerhand.karten.push(
                     move.G.markt.reihen[reiheID][positionID]
@@ -345,19 +349,19 @@ export const Game = {
                 }
             } else if (
                 move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
-                    AnzahlHandKarten.gruen + Spielerhand.chips.gruen &&
+                AnzahlHandKarten.gruen + Spielerhand.chips.gruen &&
                 move.G.markt.reihen[reiheID][positionID].Preis.rot <=
-                    AnzahlHandKarten.rot + Spielerhand.chips.rot &&
+                AnzahlHandKarten.rot + Spielerhand.chips.rot &&
                 move.G.markt.reihen[reiheID][positionID].Preis.weiss <=
-                    AnzahlHandKarten.weiss + Spielerhand.chips.weiss &&
+                AnzahlHandKarten.weiss + Spielerhand.chips.weiss &&
                 move.G.markt.reihen[reiheID][positionID].Preis.schwarz <=
-                    AnzahlHandKarten.schwarz + Spielerhand.chips.schwarz &&
+                AnzahlHandKarten.schwarz + Spielerhand.chips.schwarz &&
                 move.G.markt.reihen[reiheID][positionID].Preis.blau <=
-                    AnzahlHandKarten.blau + Spielerhand.chips.blau
+                AnzahlHandKarten.blau + Spielerhand.chips.blau
             ) {
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.gruen -
-                        AnzahlHandKarten.gruen >
+                    AnzahlHandKarten.gruen >
                     0
                 ) {
                     Spielerhand.chips.gruen =
@@ -368,7 +372,7 @@ export const Game = {
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.rot -
-                        AnzahlHandKarten.rot >
+                    AnzahlHandKarten.rot >
                     0
                 ) {
                     Spielerhand.chips.rot =
@@ -378,7 +382,7 @@ export const Game = {
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.weiss -
-                        AnzahlHandKarten.weiss >
+                    AnzahlHandKarten.weiss >
                     0
                 ) {
                     Spielerhand.chips.weiss =
@@ -388,7 +392,7 @@ export const Game = {
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.schwarz -
-                        AnzahlHandKarten.schwarz >
+                    AnzahlHandKarten.schwarz >
                     0
                 ) {
                     Spielerhand.chips.schwarz =
@@ -399,7 +403,7 @@ export const Game = {
                 }
                 if (
                     move.G.markt.reihen[reiheID][positionID].Preis.blau -
-                        AnzahlHandKarten.blau >
+                    AnzahlHandKarten.blau >
                     0
                 ) {
                     Spielerhand.chips.blau =
@@ -480,13 +484,14 @@ export const Game = {
 
     },
 
+
     seed: "random-seed",
 
     turn: {
         order: TurnOrder.DEFAULT,
 
-        onBegin: (onBegin) => {},
-        onEnd: (onEnd) => {},
+        onBegin: (onBegin) => { },
+        onEnd: (onEnd) => { },
 
         minMoves: 1,
         maxMoves: 1,
@@ -497,5 +502,29 @@ export const Game = {
 
     disableUndo: true,
 
-    endIf: (endIf) => { },
-};
+    endIf: (state) => {
+
+
+
+        
+        for (const spielerPlayOrder of state.ctx.playOrder) {
+            let siegpunktSumme = 0
+            for (const SiegpunktKarte of state.G.einzelneSpielerHaende[spielerPlayOrder].karten) {
+                console.log(spielerPlayOrder, SiegpunktKarte, state.G.einzelneSpielerHaende)
+                siegpunktSumme = siegpunktSumme + SiegpunktKarte.Siegpunkte
+                console.log(siegpunktSumme)
+            }
+            if (siegpunktSumme == 15) {
+                console.log("DER SIEGER IST:", currentPlayer)
+            }
+        }
+        
+
+/*         for (const SiegpunktKarte of state.G.einzelneSpielerHaende[spielerPlayOrder].karten) {
+        
+            siegpunktSumme = siegpunktSumme + karten[SiegpunktKarte].siegpunkte
+        
+        } */
+    },
+
+}

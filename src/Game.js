@@ -307,8 +307,9 @@ export const Game = {
                 weiss: 0,
                 schwarz: 0,
             };
-            const Spielerhand = move.G.einzelneSpielerHaende[move.playerID];
-            console.log(Spielerhand, move.playerID);
+            const Spielerhand =
+                move.G.einzelneSpielerHaende[move.ctx.currentPlayer];
+            console.log(Spielerhand, move.ctx.currentPlayer);
 
             while (i < Spielerhand.karten.length) {
                 if (Spielerhand.karten[i].Farbe == "blau") {

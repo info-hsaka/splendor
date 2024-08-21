@@ -46,15 +46,15 @@ class GameClient {
         ctx.fillStyle = "rgb(255,255,255)";
         ctx.fillRect(0, 0, 100000, 1000000);
         // Reihe Seltenheit 1
-        ctx.fillStyle = "rgb(75, 139, 59)";
+        ctx.fillStyle = "rgb(70,70,70)";
         ctx.fillRect(5, 25, 100, 150);
         ctx.strokeRect(5, 25, 100, 150);
 
-        ctx.fillStyle = "rgb(184, 156, 80)";
+        ctx.fillStyle = "rgb(110,110,110)";
         ctx.fillRect(5, 185, 100, 150);
         ctx.strokeRect(5, 185, 100, 150);
 
-        ctx.fillStyle = "#003781";
+        ctx.fillStyle = "rgb(150,150,150)";
         ctx.fillRect(5, 345, 100, 150);
         ctx.strokeRect(5, 345, 100, 150);
 
@@ -320,7 +320,7 @@ class GameClient {
             }
         }
         //nobles
-        ctx.fillStyle = "rgb(200, 200, 200)";
+        /* ctx.fillStyle = "rgb(200, 200, 200)";
         ctx.fillRect(666, 105, 90, 90);
         ctx.strokeRect(666, 105, 90, 90);
         ctx.font = "30px American Typewriter";
@@ -342,7 +342,7 @@ class GameClient {
         ctx.font = "30px American Typewriter";
         ctx.fillStyle = "rgb(100, 100, 100)";
         ctx.fillText(3, 670, 346);
-
+*/
         // Spielerhaende
 
         ctx.fillStyle = "rgb(225, 225, 225)";
@@ -360,7 +360,6 @@ class GameClient {
         ctx.fillStyle = "rgb(225, 225, 225)";
         ctx.fillRect(800, 1375, 750, 400);
         ctx.strokeRect(800, 1375, 750, 400);
-
         //chipsSpieler
 
         //erste Hand
@@ -502,7 +501,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "yellow";
+                ctx.fillStyle = "rgb(240, 230, 140)"; //gelb
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -525,7 +524,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "blue";
+                ctx.fillStyle = "rgb(0,111,185)"; //hässliches blau
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -541,13 +540,13 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(1490, 191 + idxSpieler * 440, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(248, 98, 236)";
+                ctx.fillStyle = "rgb(161,61,99)"; //rosa
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(
-                    state.G.einzelneSpielerHaende[idxSpieler].chips.weiss, //anzahl handkarten
+                    state.G.einzelneSpielerHaende[idxSpieler].chips.weiss,
                     1525,
                     200.5 + idxSpieler * 440
                 );
@@ -563,7 +562,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "green";
+                ctx.fillStyle = "rgb(22,152,115)"; //türkis
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -585,7 +584,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(25,83,95)";
+                ctx.fillStyle = "rgb(25,83,95)"; //dunkelblau
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -607,7 +606,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "black";
+                ctx.fillStyle = "rgb(128,93,157)"; //lila
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -624,43 +623,45 @@ class GameClient {
         for (const idxSpieler of state.ctx.playOrder) {
             console.log(idxSpieler);
             SpielerChips(idxSpieler, state);
+            spielerhandKartenAnzahl(idxSpieler, state);
         }
 
-        let blau = 0;
-        let weiss = 0;
-        let gruen = 0;
-        let rot = 0;
-        let schwarz = 0;
+        function spielerhandKartenAnzahl(idxSpieler, state) {
+            let blau = 0;
+            let weiss = 0;
+            let gruen = 0;
+            let rot = 0;
+            let schwarz = 0;
+            console.log(state.ctx.currentPlayer);
+            for (const kartenCounter of state.G.einzelneSpielerHaende[
+                idxSpieler
+            ].karten) {
+                //console.log(state.G)
+                if (kartenCounter.Farbe == "blau") {
+                    blau++;
+                }
+                if (kartenCounter.Farbe == "weiss") {
+                    weiss++;
+                }
+                if (kartenCounter.Farbe == "gruen") {
+                    gruen++;
+                }
+                if (kartenCounter.Farbe == "rot") {
+                    rot++;
+                }
 
-        for (const kartenCounter of state.G.einzelneSpielerHaende[
-            state.ctx.currentPlayer
-        ].karten) {
-            //console.log(state.G)
-            if (kartenCounter.Farbe == "blau") {
-                blau++;
+                if (kartenCounter.Farbe == "schwarz") {
+                    schwarz++;
+                }
             }
-            if (kartenCounter.Farbe == "weiss") {
-                weiss++;
-            }
-            if (kartenCounter.Farbe == "gruen") {
-                gruen++;
-            }
-            if (kartenCounter.Farbe == "rot") {
-                rot++;
-            }
-
-            if (kartenCounter.Farbe == "schwarz") {
-                schwarz++;
-            }
-        }
-        /*         console.log(blau, weiss, rot)
+            /*         console.log(blau, weiss, rot)
         ctx.font = "30px American Typewriter";
         ctx.fillStyle = "rgb(0, 0, 0)";
         ctx.fillText(
             "blau:", 810, 60)
         ctx.fillText(blau, 875, 60)
  */
-        /*         ctx.fillText(
+            /*         ctx.fillText(
             "weiss:", 810, 90)
         ctx.fillText(weiss, 885, 90)
 
@@ -680,24 +681,23 @@ class GameClient {
             "blau:", 810, 500)
         ctx.fillText(blau, 875, 60) */
 
-        for (const spielerAktiv of state.ctx.playOrder) {
             console.log(blau, weiss, rot);
             ctx.font = "30px American Typewriter";
             ctx.fillStyle = "rgb(0, 0, 0)";
-            ctx.fillText("blau:", 810, 60 + spielerAktiv * 440);
-            ctx.fillText(blau, 875, 60 + spielerAktiv * 440);
+            ctx.fillText("blau:", 810, 60 + idxSpieler * 440);
+            ctx.fillText(blau, 875, 60 + idxSpieler * 440);
 
-            ctx.fillText("weiss:", 810, 90 + spielerAktiv * 440);
-            ctx.fillText(weiss, 885, 90 + spielerAktiv * 440);
+            ctx.fillText("rosa:", 810, 90 + idxSpieler * 440);
+            ctx.fillText(weiss, 885, 90 + idxSpieler * 440);
 
-            ctx.fillText("gruen:", 810, 120 + spielerAktiv * 440);
-            ctx.fillText(gruen, 885, 120 + spielerAktiv * 440);
+            ctx.fillText("türkis:", 810, 120 + idxSpieler * 440);
+            ctx.fillText(gruen, 885, 120 + idxSpieler * 440);
 
-            ctx.fillText("rot:", 810, 150 + spielerAktiv * 440);
-            ctx.fillText(rot, 885, 150 + spielerAktiv * 440);
+            ctx.fillText("dunkelblau:", 810, 150 + idxSpieler * 440);
+            ctx.fillText(rot, 950, 150 + idxSpieler * 440);
 
-            ctx.fillText("schwarz:", 810, 180 + spielerAktiv * 440);
-            ctx.fillText(schwarz, 925, 180 + spielerAktiv * 440);
+            ctx.fillText("lila:", 810, 180 + idxSpieler * 440);
+            ctx.fillText(schwarz, 925, 180 + idxSpieler * 440);
         }
 
         ctx.fillStyle = "rgb(250, 250, 250)";

@@ -1,7 +1,7 @@
 import { Client } from "boardgame.io/client";
 import { Local, SocketIO } from "boardgame.io/multiplayer";
 import { resetOnClicks, onClick } from "./canvas";
-import { Game } from "./Game";
+import { Game, siegpunktAnzahl } from "./Game";
 import { Debug } from "boardgame.io/debug";
 import { setupLobby } from "./lobby";
 
@@ -490,6 +490,7 @@ class GameClient {
 
         console.log(state.G);
         function SpielerChips(idxSpieler, state) {
+
             if (state.G.einzelneSpielerHaende[idxSpieler].chips.gelb > 0) {
                 ctx.beginPath();
                 ctx.arc(
@@ -698,6 +699,23 @@ class GameClient {
             ctx.fillText("schwarz:", 810, 180 + spielerAktiv * 440);
             ctx.fillText(schwarz, 925, 180 + spielerAktiv * 440);
         }
+
+        ctx.fillStyle = "rgb(250, 250, 250)";
+        ctx.fillRect(810, 380, 40, 30);
+        for (const spielerPlayOrder of state.ctx.playOrder) {
+            ctx.strokeText(siegpunktAnzahl(state, spielerPlayOrder), 810, 405) 
+        }
+        if (state.ctx.gameover != undefined) {
+            ctx.fillStyle = "grey "
+            ctx.fillRect(50, 100, 1000, 400)
+            ctx.font = "75px American Typewriter";
+
+            ctx.fillStyle = "rgb(0, 0, 0)";
+            ctx.fillText("Player", 240, 325)
+            ctx.fillText(state.ctx.currentPlayer, 455, 325)
+            ctx.fillText("wins", 505, 325)
+        }
+
     }
 }
 

@@ -198,7 +198,7 @@ function SpielerSetup() {
         karten: [
             {
                 Farbe: "weiss",
-                Siegpunkte: 2,
+                Siegpunkte: 3,
                 Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
             },
             {
@@ -208,12 +208,12 @@ function SpielerSetup() {
             },
             {
                 Farbe: "rot",
-                Siegpunkte: 2,
+                Siegpunkte: 1,
                 Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
             },
             {
                 Farbe: "rot",
-                Siegpunkte: 2,
+                Siegpunkte: 4,
                 Preis: { rot: 4, gruen: 1, blau: 0, weiss: 0, schwarz: 2 },
             },
             {
@@ -523,23 +523,19 @@ export const Game = {
 
     endIf: (state) => {
         for (const spielerPlayOrder of state.ctx.playOrder) {
-            let siegpunktSumme = 0;
-            for (const SiegpunktKarte of state.G.einzelneSpielerHaende[
-                spielerPlayOrder
-            ].karten) {
-                console.log(
-                    spielerPlayOrder,
-                    SiegpunktKarte,
-                    state.G.einzelneSpielerHaende
-                );
-                siegpunktSumme = siegpunktSumme + SiegpunktKarte.Siegpunkte;
-                console.log(siegpunktSumme);
-            }
-            if (siegpunktSumme == 15) {
-                console.log("DER SIEGER IST:", currentPlayer);
+            let siegpunktSumme = siegpunktAnzahl(state, spielerPlayOrder)
+            let winner = spielerPlayOrder
+            console.log (siegpunktSumme)
+            if (siegpunktSumme >= 15) {
+                console.log("win");
+                console.log (winner)
+                return { winner};
+                
             }
         }
+        
 
+        
         /*         for (const SiegpunktKarte of state.G.einzelneSpielerHaende[spielerPlayOrder].karten) {
         
             siegpunktSumme = siegpunktSumme + karten[SiegpunktKarte].siegpunkte
@@ -547,3 +543,21 @@ export const Game = {
         } */
     },
 };
+export function siegpunktAnzahl(state,spielerPlayOrder) {
+    let siegpunktSumme = 0;
+
+    for (const SiegpunktKarte of state.G.einzelneSpielerHaende[
+        spielerPlayOrder
+    ].karten) {
+        console.log(
+            spielerPlayOrder,
+            SiegpunktKarte,
+            state.G.einzelneSpielerHaende
+        );
+        siegpunktSumme = siegpunktSumme + SiegpunktKarte.Siegpunkte;
+        console.log(siegpunktSumme);
+    
+    }
+    return siegpunktSumme
+}
+

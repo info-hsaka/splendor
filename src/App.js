@@ -64,7 +64,7 @@ class GameClient {
                 ctx.beginPath();
                 ctx.arc(600, 176.5, 25, 0, Math.PI * 2, true); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(0,111,185)";
+                ctx.fillStyle = "rgb(135, 206, 235)";
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -173,7 +173,7 @@ class GameClient {
                 ctx.fillStyle = "rgb(161,61,99)";
             } else if (karte.Farbe == "blau") {
                 //hässliches blau
-                ctx.fillStyle = "rgb(0,111,185)";
+                ctx.fillStyle = "rgb(135, 206, 235)";
             }
 
             ctx.fillRect(125 + i * 110, 25 + j * 160, 100, 150);
@@ -218,7 +218,6 @@ class GameClient {
                     self.update(state);
                 }
             });
-
             siegpunkteZeichnen(i, j, karte);
             preisVisualisierung(i, j, karte);
         }
@@ -244,16 +243,12 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(0,111,185)";
+                ctx.fillStyle = "rgb(135, 206, 235)";
                 ctx.fill();
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.blau, 134 + i * 110, 167.5 + j * 160);
-                (
-                    karte.Preis.blau,
-                    134 + i * 110,
-                    167.5 + j * 160
-                );
+                karte.Preis.blau, 134 + i * 110, 167.5 + j * 160;
             }
             if (karte.Preis.weiss > 0) {
                 ctx.beginPath();
@@ -544,7 +539,7 @@ class GameClient {
                     true
                 ); // Outer circle
                 ctx.stroke();
-                ctx.fillStyle = "rgb(0,111,185)"; //hässliches blau
+                ctx.fillStyle = "rgb(135, 206, 235)"; //hässliches blau
                 ctx.fill();
                 ctx.font = "30px American Typewriter";
 
@@ -639,22 +634,17 @@ class GameClient {
             }
         }
 
-
         // Test SpielerHandKarte
 
-
-
         function spielerReservierteKarten(idxSpieler, state) {
-            let j = 7.85
+            let j = 7.85;
 
-
-            for (const reskarte of state.G.einzelneSpielerHaende[idxSpieler].reservierteKarten) {
-                console.log(j, reskarte)
-                KarteMalen(j, idxSpieler * 2.811, reskarte)
-                j++
-
-
-          }
+            for (const reskarte of state.G.einzelneSpielerHaende[idxSpieler]
+                .reservierteKarten) {
+                console.log(j, reskarte);
+                KarteMalen(j, idxSpieler * 2.811, reskarte);
+                j++;
+            }
         }
 
         function spielerhandKartenAnzahl(idxSpieler, state) {
@@ -744,8 +734,8 @@ class GameClient {
             console.log(idxSpieler);
             SpielerChips(idxSpieler, state);
             spielerhandKartenAnzahl(idxSpieler, state);
-            console.log(idxSpieler)
-            spielerReservierteKarten(idxSpieler, state)
+            console.log(idxSpieler);
+            spielerReservierteKarten(idxSpieler, state);
         }
 
         if (state.ctx.gameover != undefined) {

@@ -230,7 +230,6 @@ const Seltenheit2Deck = [
         Siegpunkte: 3,
         Preis: { rot: 6, gruen: 0, blau: 0, weiss: 0, schwarz: 0 },
     },
-
 ];
 const Seltenheit3Deck = [
     {
@@ -420,6 +419,7 @@ export const Game = {
             y++;
         }
         let anzahlGezogeneChips = 0;
+
         return {
             reiheNobles: reiheNobles,
             markt: markt,
@@ -463,8 +463,15 @@ export const Game = {
             } else {
                 return INVALID_MOVE;
             }
+            move.G.anzahlGezogeneChips++;
+            if (move.G.anzahlGezogeneChips == 3) {
+                move.G.anzahlGezogeneChips = 0;
+            }
         },
         karteKaufen(move, reiheID, positionID) {
+            if (move.G.anzahlGezogeneChips > 0) {
+                return INVALID_MOVE;
+            }
             console.log(
                 JSON.stringify(move.G.markt.stapel[reiheID]),
                 JSON.stringify(move.G.markt.reihen[reiheID])
@@ -623,6 +630,9 @@ export const Game = {
             }
         },
         karteReservieren(move, reiheID, positionID) {
+            if (move.G.anzahlGezogeneChips > 0) {
+                return INVALID_MOVE;
+            }
             const Spielerhand = move.G.einzelneSpielerHaende[move.playerID];
             if (Spielerhand.reservierteKarten.length < 3) {
                 Spielerhand.reservierteKarten.push(

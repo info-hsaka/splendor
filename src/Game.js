@@ -1,6 +1,7 @@
 /** @import { Game } from "boardgame.io" */
 
-import { INVALID_MOVE, TurnOrder } from "boardgame.io/core";
+import { TurnOrder } from "boardgame.io/core";
+import { INVALID_MOVE } from "boardgame.io/core";
 
 // Nobles
 const nobles = [
@@ -172,6 +173,59 @@ const Seltenheit3Deck = [
         Farbe: "rot",
         Siegpunkte: 2,
         Preis: { rot: 1, gruen: 3, blau: 2, weiss: 0, schwarz: 0 },
+    },
+
+    //22.08.
+
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 3,
+        Preis: { rot: 3, gruen: 5, blau: 3, weiss: 3, schwarz: 0 },
+    }, // keine echte Karte nur beispiel
+    {
+        Farbe: "gruen",
+        Siegpunkte: 4,
+        Preis: { rot: 0, gruen: 0, blau: 7, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 4,
+        Preis: { rot: 6, gruen: 3, blau: 0, weiss: 0, schwarz: 3 },
+    },
+    {
+        Farbe: "blau",
+        Siegpunkte: 5,
+        Preis: { rot: 0, gruen: 0, blau: 3, weiss: 7, schwarz: 0 },
+    },
+    {
+        Farbe: "weiss",
+        Siegpunkte: 5,
+        Preis: { rot: 0, gruen: 0, blau: 0, weiss: 3, schwarz: 7 },
+    }, // keine echte Karte nur beispiel
+    {
+        Farbe: "rot",
+        Siegpunkte: 5,
+        Preis: { rot: 7, gruen: 3, blau: 0, weiss: 0, schwarz: 0 },
+    }, // keine echte Karte nur beispiel
+    {
+        Farbe: "blau",
+        Siegpunkte: 2,
+        Preis: { rot: 3, gruen: 7, blau: 2, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 4,
+        Preis: { rot: 7, gruen: 0, blau: 0, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 5,
+        Preis: { rot: 7, gruen: 0, blau: 0, weiss: 0, schwarz: 3 },
+    },
+    {
+        Farbe: "rot",
+        Siegpunkte: 9,
+        Preis: { rot: 9, gruen: 9, blau: 9, weiss: 9, schwarz: 9 },
     },
 ];
 
@@ -462,40 +516,26 @@ export const Game = {
         karteReservieren(move, reiheID, positionID) {
             const Spielerhand = move.G.einzelneSpielerHaende[move.playerID];
             if (Spielerhand.reservierteKarten.length < 3) {
-                if (reiheID == 0) {
-                    move.G.markt.reihen[reiheID].splice(positionID, 1);
+                Spielerhand.reservierteKarten.push(
+                    move.G.markt.reihen[reiheID][positionID]
+                );
+                move.G.markt.reihen[reiheID].splice(positionID, 1);
+                if (move.G.markt.stapel[reiheID].length > 0) {
                     move.G.markt.reihen[reiheID].splice(
                         positionID,
                         0,
-                        Seltenheit1Deck.pop()
-                    );
-                } else if (reiheID == 1) {
-                    move.G.markt.reihen[reiheID].splice(positionID, 1);
-                    move.G.markt.reihen[reiheID].splice(
-                        positionID,
-                        0,
-                        Seltenheit2Deck.pop()
-                    );
-                } else if (reiheID == 2) {
-                    move.G.markt.reihen[reiheID].splice(positionID, 1);
-                    move.G.markt.reihen[reiheID].splice(
-                        positionID,
-                        0,
-                        Seltenheit3Deck.pop()
+                        move.G.markt.stapel[reiheID].pop()
                     );
                 }
-                Spielerhand.reservierteKarten.push(
-                    move.G.reihen[reiheID][positionID]
-                );
-                if (move.G.markt.chipsReservoir.gelb > 0) {
+                if (move.G.chipsReservoir.gelb > 0) {
                     Spielerhand.chips.gelb = Spielerhand.chips.gelb + 1;
-                    move.G.markt.chipsReservoir.gelb =
-                        move.G.markt.chipsReservoir.gelb - 1;
-                } else console.log("Keine gelben Chips mehr verfügbar!");
-            } else
-                console.log(
-                    "Zeitgleich dürfen maximal drei Karten reserviert werden!"
-                ); /* 
+                    move.G.chipsReservoir.gelb = move.G.chipsReservoir.gelb - 1;
+                } else {
+                    return INVALID_MOVE;
+                }
+            } else {
+                return INVALID_MOVE;
+            } /* 
                 reservierteKartenKaufen (move, reservierteKarteID) {
                   
                 } */

@@ -200,8 +200,9 @@ class GameClient {
         function siegpunkteZeichnen(i, j, karte) {
             if (karte.Siegpunkte != 0) {
                 ctx.font = "30px American Typewriter";
-                ctx.fillStyle = "rgb(255, 255, 255)";
+                ctx.fillStyle = "rgb(150, 150, 150)";
                 ctx.fillText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
+
             }
         }
 
@@ -246,6 +247,7 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.weiss, 134 + i * 110, 145 + j * 160);
+
             }
             if (karte.Preis.gruen > 0) {
                 ctx.beginPath();
@@ -263,6 +265,7 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.gruen, 134 + i * 110, 122.5 + j * 160);
+
             }
             if (karte.Preis.rot > 0) {
                 ctx.beginPath();
@@ -280,6 +283,7 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.rot, 134 + i * 110, 100 + j * 160);
+
             }
             if (karte.Preis.schwarz > 0) {
                 ctx.beginPath();
@@ -691,20 +695,20 @@ class GameClient {
             console.log(blau, weiss, rot);
             ctx.font = "30px American Typewriter";
             ctx.fillStyle = "rgb(0, 0, 0)";
-            ctx.fillText("blau:", 810, 60 + idxSpieler * 440);
-            ctx.fillText(blau, 875, 60 + idxSpieler * 440);
+            ctx.fillText("blau:", 810, 60 + idxSpieler * 447.5);
+            ctx.fillText(blau, 875, 60 + idxSpieler * 447.5);
 
-            ctx.fillText("rosa:", 810, 90 + idxSpieler * 440);
-            ctx.fillText(weiss, 885, 90 + idxSpieler * 440);
+            ctx.fillText("rosa:", 810, 90 + idxSpieler * 447.5);
+            ctx.fillText(weiss, 885, 90 + idxSpieler * 447.5);
 
-            ctx.fillText("türkis:", 810, 120 + idxSpieler * 440);
-            ctx.fillText(gruen, 885, 120 + idxSpieler * 440);
+            ctx.fillText("türkis:", 810, 120 + idxSpieler * 447.5);
+            ctx.fillText(gruen, 885, 120 + idxSpieler * 447.5);
 
-            ctx.fillText("dunkelblau:", 810, 150 + idxSpieler * 440);
-            ctx.fillText(rot, 950, 150 + idxSpieler * 440);
+            ctx.fillText("dunkelblau:", 810, 150 + idxSpieler * 447.5);
+            ctx.fillText(rot, 950, 150 + idxSpieler * 447.5);
 
-            ctx.fillText("lila:", 810, 180 + idxSpieler * 440);
-            ctx.fillText(schwarz, 925, 180 + idxSpieler * 440);
+            ctx.fillText("lila:", 810, 180 + idxSpieler * 447.5);
+            ctx.fillText(schwarz, 925, 180 + idxSpieler * 447.5);
         }
 
         for (const spielerPlayOrder of state.ctx.playOrder) {

@@ -19,7 +19,7 @@ class GameClient {
 
         this.client = Client({
             game: Game,
-            numPlayers: 4,
+            numPlayers: 2,
             multiplayer: isMultiplayer ? multiplayer : undefined,
             debug: {
                 collapseOnLoad: false,

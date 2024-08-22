@@ -49,17 +49,17 @@ class GameClient {
         // Reihe Seltenheit 1
         ctx.fillStyle = "rgb(70,70,70)";
         ctx.fillRect(5, 25, 100, 150);
-        drawPicture(ctx, "seltenheit1.jpg",5, 25, 100, 150)
+        drawPicture(ctx, "seltenheit1.jpg", 5, 25, 100, 150);
         ctx.strokeRect(5, 25, 100, 150);
 
         ctx.fillStyle = "rgb(110,110,110)";
         ctx.fillRect(5, 185, 100, 150);
-        drawPicture(ctx, "seltenheit3.jpg",5, 185, 100, 150)
+        drawPicture(ctx, "seltenheit3.jpg", 5, 185, 100, 150);
         ctx.strokeRect(5, 185, 100, 150);
 
         ctx.fillStyle = "rgb(150,150,150)";
         ctx.fillRect(5, 345, 100, 150);
-        drawPicture(ctx, "seltenheit2.jpg",5, 345, 100, 150 )
+        drawPicture(ctx, "seltenheit2.jpg", 5, 345, 100, 150);
         ctx.strokeRect(5, 345, 100, 150);
 
         function chipsVisualisieren(marktChips) {
@@ -131,34 +131,27 @@ class GameClient {
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(marktChips.schwarz, 635, 402.5);
             }
-            let k = 0;
 
             onClick(575, 370, 40, 40, () => {
                 self.client.moves.chipsZiehen("schwarz");
-                k++;
             });
 
             onClick(575, 315, 40, 30, () => {
                 self.client.moves.chipsZiehen("rot");
-                k++;
             });
             onClick(575, 270, 40, 20, () => {
                 self.client.moves.chipsZiehen("gruen");
-                k++;
             });
             onClick(575, 220, 40, 20, () => {
                 self.client.moves.chipsZiehen("weiss");
-                k++;
             });
             onClick(575, 165, 40, 20, () => {
                 self.client.moves.chipsZiehen("blau");
-                k++;
             });
             40;
             onClick(575, 120, 40, 20, () => {
                 575;
                 self.client.moves.chipsZiehen("gelb");
-                k++;
             });
         }
 
@@ -227,9 +220,9 @@ class GameClient {
         function siegpunkteZeichnen(i, j, karte) {
             if (karte.Siegpunkte != 0) {
                 ctx.font = "30px American Typewriter";
-                ctx.fillStyle = "rgb(150, 150, 150)";
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.strokeText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
                 ctx.fillText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
-
             }
         }
 
@@ -270,7 +263,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.weiss, 134 + i * 110, 145 + j * 160);
-
             }
             if (karte.Preis.gruen > 0) {
                 ctx.beginPath();
@@ -288,7 +280,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.gruen, 134 + i * 110, 122.5 + j * 160);
-
             }
             if (karte.Preis.rot > 0) {
                 ctx.beginPath();
@@ -306,7 +297,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.rot, 134 + i * 110, 100 + j * 160);
-
             }
             if (karte.Preis.schwarz > 0) {
                 ctx.beginPath();

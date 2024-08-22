@@ -127,10 +127,35 @@ class GameClient {
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(marktChips.schwarz, 635, 402.5);
             }
-            /*  onClick(600, 392, 25, 0, Math.PI * 2, () => {
-                //Wie Kreis in OnClick? 
-                self.client.moves.chipsZiehen("schwarz");});
-           */
+            let k = 0;
+
+            onClick(575, 370, 40, 40, () => {
+                self.client.moves.chipsZiehen("schwarz");
+                k++;
+            });
+
+            onClick(575, 315, 40, 30, () => {
+                self.client.moves.chipsZiehen("rot");
+                k++;
+            });
+            onClick(575, 270, 40, 20, () => {
+                self.client.moves.chipsZiehen("gruen");
+                k++;
+            });
+            onClick(575, 220, 40, 20, () => {
+                self.client.moves.chipsZiehen("weiss");
+                k++;
+            });
+            onClick(575, 165, 40, 20, () => {
+                self.client.moves.chipsZiehen("blau");
+                k++;
+            });
+            40;
+            onClick(575, 120, 40, 20, () => {
+                575;
+                self.client.moves.chipsZiehen("gelb");
+                k++;
+            });
         }
 
         function KarteMalen(i, j, karte) {
@@ -314,15 +339,14 @@ class GameClient {
             const reihe = state.G.markt.reihen[j];
             //console.log(reihe, j);
             for (let i in state.G.markt.reihen[j]) {
-                const chipsReservoir = state.G.markt.marktChips;
                 const karte = reihe[i];
                 console.log(karte, reihe);
 
                 //console.log(chipsReservoir)
                 KarteMalen(i, j, karte);
-                chipsVisualisieren(chipsReservoir);
             }
         }
+        chipsVisualisieren(state.G.markt.marktChips);
         //nobles
         /* ctx.fillStyle = "rgb(200, 200, 200)";
         ctx.fillRect(666, 105, 90, 90);

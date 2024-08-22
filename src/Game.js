@@ -1,6 +1,6 @@
 /** @import { Game } from "boardgame.io" */
 
-import { TurnOrder } from "boardgame.io/core";
+import { INVALID_MOVE, TurnOrder } from "boardgame.io/core";
 
 // Nobles
 const nobles = [
@@ -256,36 +256,51 @@ export const Game = {
             reiheNobles.push(nobles.pop());
             y++;
         }
+        let anzahlGezogeneChips = 0;
         return {
             reiheNobles: reiheNobles,
             markt: markt,
             einzelneSpielerHaende: einzelneSpielerHaende,
             chipsReservoir: chipsReservoir,
+            anzahlGezogeneChips,
         };
     },
 
     moves: {
         //Funktion initiiert, dass eine Karte gekauft wird.
+
         chipsZiehen(move, farbe) {
             const Spielerhand =
                 move.G.einzelneSpielerHaende[move.ctx.currentPlayer];
-            if (farbe == gruen) {
-                Spielerhand.chips.gruen = Spielerhand.chips.gruen +1
-                move.G.markt.marktChips.gruen =move.G.markt.marktChips.gruen -1
-            } else     if (farbe == rot) {
-                Spielerhand.chips.rot = Spielerhand.chips.rot +1
-                move.G.markt.marktChips.rot =move.G.markt.marktChips.rot -1
-            }else    if (farbe == weiss) {
-                Spielerhand.chips.weiss = Spielerhand.chips.weiss +1
-                move.G.markt.marktChips.weiss =move.G.markt.marktChips.weiss -1
-            }else    if (farbe == schwarz) {
-                Spielerhand.chips.schwarz = Spielerhand.chips.schwarz +1
-                move.G.markt.marktChips.schwarz =move.G.markt.marktChips.schwarz -1
-            } else    if (farbe == blau) {
-                Spielerhand.chips.blau = Spielerhand.chips.blau +1
-                move.G.markt.marktChips.blau =move.G.markt.marktChips.blau -1
+
+            if (farbe == "gruen" && move.G.markt.marktChips.gruen > 0) {
+                Spielerhand.chips.gruen = Spielerhand.chips.gruen + 1;
+                move.G.markt.marktChips.gruen =
+                    move.G.markt.marktChips.gruen - 1;
+            } else if (farbe == "rot" && move.G.markt.marktChips.rot > 0) {
+                Spielerhand.chips.rot = Spielerhand.chips.rot + 1;
+                move.G.markt.marktChips.rot = move.G.markt.marktChips.rot - 1;
+            } else if (farbe == "weiss" && move.G.markt.marktChips.weiss > 0) {
+                Spielerhand.chips.weiss = Spielerhand.chips.weiss + 1;
+                move.G.markt.marktChips.weiss =
+                    move.G.markt.marktChips.weiss - 1;
+            } else if (
+                farbe == "schwarz" &&
+                move.G.markt.marktChips.schwarz > 0
+            ) {
+                Spielerhand.chips.schwarz = Spielerhand.chips.schwarz + 1;
+                move.G.markt.marktChips.schwarz =
+                    move.G.markt.marktChips.schwarz - 1;
+            } else if (farbe == "blau" && move.G.markt.marktChips.blau > 0) {
+                Spielerhand.chips.blau = Spielerhand.chips.blau + 1;
+                move.G.markt.marktChips.blau = move.G.markt.marktChips.blau - 1;
+            } else if (farbe == "gelb" && move.G.markt.marktChips.gelb > 0) {
+                Spielerhand.chips.blau = Spielerhand.chips.blau + 1;
+                move.G.markt.marktChips.blau = move.G.markt.marktChips.blau - 1;
+            } else {
+                return INVALID_MOVE;
             }
-        }
+        },
         karteKaufen(move, reiheID, positionID) {
             console.log(
                 JSON.stringify(move.G.markt.stapel[reiheID]),
@@ -343,6 +358,7 @@ export const Game = {
                         move.G.markt.stapel[reiheID].pop()
                     );
                 }
+                move.events.endTurn();
             } else if (
                 move.G.markt.reihen[reiheID][positionID].Preis.gruen <=
                     AnzahlHandKarten.gruen + Spielerhand.chips.gruen &&
@@ -438,6 +454,7 @@ export const Game = {
                         move.G.markt.stapel[reiheID].pop()
                     );
                 }
+                move.events.endTurn();
             } else {
                 console.log("Nicht genug Ressourcen!");
             }
@@ -482,6 +499,7 @@ export const Game = {
                 reservierteKartenKaufen (move, reservierteKarteID) {
                   
                 } */
+            move.events.endTurn();
         },
 
         // zweichipsZiehen(move, colour) {
@@ -507,7 +525,7 @@ export const Game = {
         onEnd: (onEnd) => {},
 
         minMoves: 1,
-        maxMoves: 1,
+        maxMoves: 3,
     },
 
     minPlayers: 2,
@@ -517,19 +535,16 @@ export const Game = {
 
     endIf: (state) => {
         for (const spielerPlayOrder of state.ctx.playOrder) {
-            let siegpunktSumme = siegpunktAnzahl(state, spielerPlayOrder)
-            let winner = spielerPlayOrder
-            console.log (siegpunktSumme)
+            let siegpunktSumme = siegpunktAnzahl(state, spielerPlayOrder);
+            let winner = spielerPlayOrder;
+            console.log(siegpunktSumme);
             if (siegpunktSumme >= 15) {
                 console.log("win");
-                console.log (winner)
-                return { winner};
-                
+                console.log(winner);
+                return { winner };
             }
         }
-        
 
-        
         /*         for (const SiegpunktKarte of state.G.einzelneSpielerHaende[spielerPlayOrder].karten) {
         
             siegpunktSumme = siegpunktSumme + karten[SiegpunktKarte].siegpunkte
@@ -537,12 +552,11 @@ export const Game = {
         } */
     },
 };
-export function siegpunktAnzahl(state,spielerPlayOrder) {
+export function siegpunktAnzahl(state, spielerPlayOrder) {
     let siegpunktSumme = 0;
 
-    for (const SiegpunktKarte of state.G.einzelneSpielerHaende[
-        spielerPlayOrder
-    ].karten) {
+    for (const SiegpunktKarte of state.G.einzelneSpielerHaende[spielerPlayOrder]
+        .karten) {
         console.log(
             spielerPlayOrder,
             SiegpunktKarte,
@@ -550,8 +564,6 @@ export function siegpunktAnzahl(state,spielerPlayOrder) {
         );
         siegpunktSumme = siegpunktSumme + SiegpunktKarte.Siegpunkte;
         console.log(siegpunktSumme);
-    
     }
-    return siegpunktSumme
+    return siegpunktSumme;
 }
-

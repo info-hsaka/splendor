@@ -350,12 +350,12 @@ const chipsReservoir = {
 function SpielerSetup() {
     const SpielerHandStart = {
         chips: {
-            gruen: 100,
-            rot: 100,
-            blau: 100,
-            weiss: 100,
-            schwarz: 100,
-            gelb: 10,
+            gruen: 0,
+            rot: 0,
+            blau: 0,
+            weiss:0,
+            schwarz: 0,
+            gelb: 0,
         }, // wieder auf null setzen
 
         karten: [],

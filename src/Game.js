@@ -352,10 +352,10 @@ function SpielerSetup() {
             gruen: 0,
             rot: 0,
             blau: 0,
-            weiss:0,
+            weiss: 0,
             schwarz: 0,
             gelb: 0,
-        }, // wieder auf null setzen
+        },
 
         karten: [],
 

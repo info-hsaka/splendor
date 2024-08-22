@@ -131,34 +131,27 @@ class GameClient {
                 ctx.fillStyle = "rgb(0, 0, 0)";
                 ctx.fillText(marktChips.schwarz, 635, 402.5);
             }
-            let k = 0;
 
             onClick(575, 370, 40, 40, () => {
                 self.client.moves.chipsZiehen("schwarz");
-                k++;
             });
 
             onClick(575, 315, 40, 30, () => {
                 self.client.moves.chipsZiehen("rot");
-                k++;
             });
             onClick(575, 270, 40, 20, () => {
                 self.client.moves.chipsZiehen("gruen");
-                k++;
             });
             onClick(575, 220, 40, 20, () => {
                 self.client.moves.chipsZiehen("weiss");
-                k++;
             });
             onClick(575, 165, 40, 20, () => {
                 self.client.moves.chipsZiehen("blau");
-                k++;
             });
             40;
             onClick(575, 120, 40, 20, () => {
                 575;
                 self.client.moves.chipsZiehen("gelb");
-                k++;
             });
         }
 
@@ -227,7 +220,8 @@ class GameClient {
         function siegpunkteZeichnen(i, j, karte) {
             if (karte.Siegpunkte != 0) {
                 ctx.font = "30px American Typewriter";
-                ctx.fillStyle = "rgb(150, 150, 150)";
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.strokeText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
                 ctx.fillText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
             }
         }

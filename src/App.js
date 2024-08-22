@@ -49,17 +49,17 @@ class GameClient {
         // Reihe Seltenheit 1
         ctx.fillStyle = "rgb(70,70,70)";
         ctx.fillRect(5, 25, 100, 150);
-        drawPicture(ctx, "seltenheit1.jpg",5, 25, 100, 150)
+        drawPicture(ctx, "seltenheit1.jpg", 5, 25, 100, 150);
         ctx.strokeRect(5, 25, 100, 150);
 
         ctx.fillStyle = "rgb(110,110,110)";
         ctx.fillRect(5, 185, 100, 150);
-        drawPicture(ctx, "seltenheit3.jpg",5, 185, 100, 150)
+        drawPicture(ctx, "seltenheit3.jpg", 5, 185, 100, 150);
         ctx.strokeRect(5, 185, 100, 150);
 
         ctx.fillStyle = "rgb(150,150,150)";
         ctx.fillRect(5, 345, 100, 150);
-        drawPicture(ctx, "seltenheit2.jpg",5, 345, 100, 150 )
+        drawPicture(ctx, "seltenheit2.jpg", 5, 345, 100, 150);
         ctx.strokeRect(5, 345, 100, 150);
 
         function chipsVisualisieren(marktChips) {
@@ -229,7 +229,6 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
                 ctx.fillStyle = "rgb(150, 150, 150)";
                 ctx.fillText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
-
             }
         }
 
@@ -270,7 +269,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.weiss, 134 + i * 110, 145 + j * 160);
-
             }
             if (karte.Preis.gruen > 0) {
                 ctx.beginPath();
@@ -288,7 +286,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.gruen, 134 + i * 110, 122.5 + j * 160);
-
             }
             if (karte.Preis.rot > 0) {
                 ctx.beginPath();
@@ -306,7 +303,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.rot, 134 + i * 110, 100 + j * 160);
-
             }
             if (karte.Preis.schwarz > 0) {
                 ctx.beginPath();

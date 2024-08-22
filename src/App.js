@@ -1,6 +1,6 @@
 import { Client } from "boardgame.io/client";
 import { Local, SocketIO } from "boardgame.io/multiplayer";
-import { resetOnClicks, onClick } from "./canvas";
+import { resetOnClicks, onClick, drawPicture } from "./canvas";
 import { Game, siegpunktAnzahl } from "./Game";
 import { Debug } from "boardgame.io/debug";
 import { setupLobby } from "./lobby";
@@ -49,14 +49,17 @@ class GameClient {
         // Reihe Seltenheit 1
         ctx.fillStyle = "rgb(70,70,70)";
         ctx.fillRect(5, 25, 100, 150);
+        drawPicture(ctx, "seltenheit1.jpg",5, 25, 100, 150)
         ctx.strokeRect(5, 25, 100, 150);
 
         ctx.fillStyle = "rgb(110,110,110)";
         ctx.fillRect(5, 185, 100, 150);
+        drawPicture(ctx, "seltenheit3.jpg",5, 185, 100, 150)
         ctx.strokeRect(5, 185, 100, 150);
 
         ctx.fillStyle = "rgb(150,150,150)";
         ctx.fillRect(5, 345, 100, 150);
+        drawPicture(ctx, "seltenheit2.jpg",5, 345, 100, 150 )
         ctx.strokeRect(5, 345, 100, 150);
 
         function chipsVisualisieren(marktChips) {

@@ -1,6 +1,6 @@
 import { LobbyClient } from "boardgame.io/client";
 
-const lobbyClient = new LobbyClient({ server: "http://localhost:8000" });
+const lobbyClient = new LobbyClient({ server: import.meta.env.VITE_MUTLIPLAYER_SERVER ?? "http://localhost:8000" });
 
 function resetElement(el) {
   const newElement = el.cloneNode(true);

@@ -227,7 +227,6 @@ class GameClient {
                 ctx.font = "30px American Typewriter";
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
-                ctx.strokeText(karte.Siegpunkte, 130 + i * 110, 50 + j * 160);
             }
         }
 
@@ -250,7 +249,7 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.blau, 134 + i * 110, 167.5 + j * 160);
-                ctx.strokeText(
+                (
                     karte.Preis.blau,
                     134 + i * 110,
                     167.5 + j * 160
@@ -272,7 +271,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.weiss, 134 + i * 110, 145 + j * 160);
-                ctx.strokeText(karte.Preis.weiss, 134 + i * 110, 145 + j * 160);
             }
             if (karte.Preis.gruen > 0) {
                 ctx.beginPath();
@@ -290,11 +288,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.gruen, 134 + i * 110, 122.5 + j * 160);
-                ctx.strokeText(
-                    karte.Preis.gruen,
-                    134 + i * 110,
-                    122.5 + j * 160
-                );
             }
             if (karte.Preis.rot > 0) {
                 ctx.beginPath();
@@ -312,7 +305,6 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.rot, 134 + i * 110, 100 + j * 160);
-                ctx.strokeText(karte.Preis.rot, 134 + i * 110, 100 + j * 160);
             }
             if (karte.Preis.schwarz > 0) {
                 ctx.beginPath();
@@ -330,7 +322,7 @@ class GameClient {
 
                 ctx.fillStyle = "rgb(255, 255, 255)";
                 ctx.fillText(karte.Preis.schwarz, 134 + i * 110, 78 + j * 160);
-                //ctx.strokeText(karte.Preis.schwarz, 134 + i * 110, 122,5 + j * 160)
+                //(karte.Preis.schwarz, 134 + i * 110, 122,5 + j * 160)
             }
         }
 

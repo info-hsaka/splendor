@@ -74,6 +74,71 @@ const Seltenheit1Deck = [
         Preis: { rot: 2, gruen: 2, blau: 0, weiss: 1, schwarz: 0 },
     },
     {
+        Farbe: "gruen",
+        Siegpunkte: 1,
+        Preis: { rot: 1, gruen: 1, blau: 2, weiss: 1, schwarz: 0 },
+    },
+    {
+        Farbe: "blau",
+        Siegpunkte: 0,
+        Preis: { rot: 0, gruen: 0, blau: 0, weiss: 0, schwarz: 3 },
+    },
+    {
+        Farbe: "blau",
+        Siegpunkte: 0,
+        Preis: { rot: 2, gruen: 1, blau: 0, weiss: 1, schwarz: 1 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 0,
+        Preis: { rot: 1, gruen: 0, blau: 2, weiss: 2, schwarz: 0 },
+    },
+    {
+        Farbe: "rot",
+        Siegpunkte: 1,
+        Preis: { rot: 0, gruen: 0, blau: 1, weiss: 2, schwarz: 0 },
+    },
+    {
+        Farbe: "gruen",
+        Siegpunkte: 0,
+        Preis: { rot: 3, gruen: 0, blau: 0, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "blau",
+        Siegpunkte: 0,
+        Preis: { rot: 1, gruen: 1, blau: 0, weiss: 1, schwarz: 1 },
+    },
+    {
+        Farbe: "rot",
+        Siegpunkte: 0,
+        Preis: { rot: 0, gruen: 1, blau: 2, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 0,
+        Preis: { rot: 3, gruen: 1, blau: 0, weiss: 0, schwarz: 1 },
+    },
+    {
+        Farbe: "weiss",
+        Siegpunkte: 0,
+        Preis: { rot: 0, gruen: 0, blau: 2, weiss: 0, schwarz: 2 },
+    },
+    {
+        Farbe: "gruen",
+        Siegpunkte: 1,
+        Preis: { rot: 2, gruen: 0, blau: 0, weiss: 0, schwarz: 1 },
+    },
+    {
+        Farbe: "rot",
+        Siegpunkte: 0,
+        Preis: { rot: 0, gruen: 1, blau: 0, weiss: 2, schwarz: 2 },
+    },
+    {
+        Farbe: "weiss",
+        Siegpunkte: 1,
+        Preis: { rot: 2, gruen: 2, blau: 0, weiss: 1, schwarz: 0 },
+    },
+    {
         Farbe: "schwarz",
         Siegpunkte: 0,
         Preis: { rot: 1, gruen: 1, blau: 2, weiss: 1, schwarz: 0 },
@@ -122,6 +187,50 @@ const Seltenheit2Deck = [
         Siegpunkte: 1,
         Preis: { rot: 0, gruen: 0, blau: 3, weiss: 2, schwarz: 2 },
     },
+
+    //22.08.
+
+    {
+        Farbe: "rot",
+        Siegpunkte: 1,
+        Preis: { rot: 2, gruen: 0, blau: 3, weiss: 0, schwarz: 3 },
+    },
+    {
+        Farbe: "schwarz",
+        Siegpunkte: 2,
+        Preis: { rot: 0, gruen: 0, blau: 0, weiss: 5, schwarz: 0 },
+    },
+    {
+        Farbe: "blau",
+        Siegpunkte: 3,
+        Preis: { rot: 0, gruen: 0, blau: 6, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "blau",
+        Siegpunkte: 1,
+        Preis: { rot: 0, gruen: 2, blau: 2, weiss: 0, schwarz: 3 },
+    },
+    {
+        Farbe: "gruen",
+        Siegpunkte: 2,
+        Preis: { rot: 0, gruen: 3, blau: 5, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "gruen",
+        Siegpunkte: 2,
+        Preis: { rot: 0, gruen: 5, blau: 0, weiss: 0, schwarz: 0 },
+    },
+    {
+        Farbe: "rot",
+        Siegpunkte: 2,
+        Preis: { rot: 0, gruen: 2, blau: 4, weiss: 1, schwarz: 0 },
+    },
+    {
+        Farbe: "rot",
+        Siegpunkte: 3,
+        Preis: { rot: 6, gruen: 0, blau: 0, weiss: 0, schwarz: 0 },
+    },
+
 ];
 const Seltenheit3Deck = [
     {

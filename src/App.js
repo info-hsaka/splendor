@@ -19,6 +19,7 @@ class GameClient {
 
         this.client = Client({
             game: Game,
+            numPlayers: 4,
             multiplayer: isMultiplayer ? multiplayer : undefined,
             debug: {
                 collapseOnLoad: false,
@@ -621,12 +622,23 @@ class GameClient {
                 );
             }
         }
+
+
         // Test SpielerHandKarte
 
-        for (const idxSpieler of state.ctx.playOrder) {
-            console.log(idxSpieler);
-            SpielerChips(idxSpieler, state);
-            spielerhandKartenAnzahl(idxSpieler, state);
+
+
+        function spielerReservierteKarten(idxSpieler, state) {
+            let j = 7.85
+
+
+            for (const reskarte of state.G.einzelneSpielerHaende[idxSpieler].reservierteKarten) {
+                console.log(j, reskarte)
+                KarteMalen(j, idxSpieler * 2.811, reskarte)
+                j++
+
+
+          }
         }
 
         function spielerhandKartenAnzahl(idxSpieler, state) {
@@ -712,6 +724,14 @@ class GameClient {
                 405 + 450 * spielerPlayOrder
             );
         }
+        for (const idxSpieler of state.ctx.playOrder) {
+            console.log(idxSpieler);
+            SpielerChips(idxSpieler, state);
+            spielerhandKartenAnzahl(idxSpieler, state);
+            console.log(idxSpieler)
+            spielerReservierteKarten(idxSpieler, state)
+        }
+
         if (state.ctx.gameover != undefined) {
             ctx.fillStyle = "pink";
             ctx.fillRect(50, 100, 1000, 400);

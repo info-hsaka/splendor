@@ -406,7 +406,7 @@ export const Game = {
             marktChips: {
                 rot: 7,
                 gruen: 7,
-                blau: 2,
+                blau: 7,
                 weiss: 7,
                 schwarz: 7,
                 gelb: 5,

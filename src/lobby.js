@@ -70,7 +70,7 @@ export function setupLobby(isMultiplayer, createGameClient) {
 
       createGameElement.addEventListener("click", async () => {
         const createMatchResult = await lobbyClient.createMatch("default", {
-          numPlayers: 4,
+          numPlayers: 2,
         });
         if (!createMatchResult?.matchID) return;
 
